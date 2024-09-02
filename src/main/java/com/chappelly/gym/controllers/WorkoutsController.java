@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/workouts")
@@ -34,7 +35,7 @@ public class WorkoutsController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Workout> getWorkoutById(@PathVariable Long id, HttpServletRequest request) {
+    public ResponseEntity<Workout> getWorkoutById(@PathVariable UUID id, HttpServletRequest request) {
         Optional<User> jwtUser = jwtUtil.getUserFromJwtToken(request.getCookies());
         if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 

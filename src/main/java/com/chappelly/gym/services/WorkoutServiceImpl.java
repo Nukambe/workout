@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class WorkoutServiceImpl implements WorkoutService {
@@ -52,7 +53,7 @@ public class WorkoutServiceImpl implements WorkoutService {
     }
 
     @Override
-    public Workout findWorkoutByUserAndId(User user, Long id) {
+    public Workout findWorkoutByUserAndId(User user, UUID id) {
         return this.workoutRepository.findWorkoutByUserAndId(user, id);
     }
 }
