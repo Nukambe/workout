@@ -1,0 +1,67 @@
+button {
+    margin: unset;
+    background-color: unset;
+    border: unset;
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.exercise-name {
+    width: 100%;
+}
+
+.exercise-header button {
+    margin-top: auto;
+}
+
+.exercise-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.exercise-weight {
+    display: flex;
+    width: 100%;
+}
+
+.exercise-weight label {
+    width: 64px;
+}
+
+.exercise-weight input {
+    width: 64px;
+    margin-left: 1em;
+}
+
+.unit-buttons {
+    display: flex;
+    /* gap: 0.1em; */
+    margin-left: auto;
+}
+
+.unit-buttons button {
+    margin: unset;
+    width: 48px;
+    height: 48px;
+}
+
+.sets-header {
+    display: flex;
+    align-items: center;
+}
+
+.sets-header h3 {
+    margin: 0;
+}
+
+.sets-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}

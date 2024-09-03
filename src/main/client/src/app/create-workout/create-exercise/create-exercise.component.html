@@ -1,0 +1,48 @@
+<section>
+    <div class="exercise-header">
+        @if (focused) {
+        <div>
+            <label>
+                Name:
+                <input type="text">
+            </label>
+        </div>
+        } @else {
+        <p (click)="openExercise()" class="exercise-name">{{ exercise.name }}</p>
+        }
+        <p (click)="focused ? closeExercise() : openExercise()">
+            {{ focused ? "&uparrow;" : "&downarrow;" }}
+        </p>
+    </div>
+    @if (focused) {
+    <div class="exercise-body">
+        <label>
+            Note
+            <input type="text">
+        </label>
+        <div class="exercise-weight">
+            <label>Max Weight:</label>
+            <input type="number">
+            <div class="unit-buttons">
+                <button>
+                    kg
+                </button>
+                <button>
+                    lb
+                </button>
+            </div>
+        </div>
+        <div>
+            <div class="sets-header">
+                <h3>SETS</h3>
+                <button (click)="addEmptySet()">+</button>
+            </div>
+            <div class="sets-body">
+                @for (set of exercise.sets; track $index) {
+                <app-create-set [set]="set"></app-create-set>
+                }
+            </div>
+        </div>
+    </div>
+    }
+</section>

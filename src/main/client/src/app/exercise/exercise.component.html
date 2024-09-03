@@ -1,0 +1,18 @@
+<hr>
+<div>
+  {{ exercise.name }}
+  <span>&downarrow;</span>
+  <button (click)="edit()">Edit</button>
+</div>
+<section>
+  @for (set of exercise.sets; track $index) {
+    <div style="display: flex; justify-content: space-evenly; align-items: center">
+      SET {{ $index + 1 }}
+      <div>{{ set.ratio }}%</div>
+      <div>{{ ((set.ratio / 100) * exercise.maxWeight) | number:'1.2-2' }} lbs</div>
+      <div>REPS: {{ set.reps }}</div>
+    </div>
+  } @empty {
+    <p>Add a set +</p>
+  }
+</section>

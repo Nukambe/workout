@@ -1,0 +1,29 @@
+<h1>CREATE WORKOUT</h1>
+
+<section>
+  <h2>WORKOUT</h2>
+  <form>
+    <label>
+      Name
+      <input type="text">
+    </label>
+    <label>
+      Date
+      <input type="date" #dateInput (click)="openDatePicker($event)">
+    </label>
+  </form>
+</section>
+
+<section>
+  <h2>EXERCISES</h2>
+  <div id="exercises">
+    @for (exercise of workout.exercises; track $index) {
+    <app-create-exercise [exercise]="exercise" [focused]="$index + 1 === focusedExercise"
+      (open)="focusExercise($index)" (close)="unfocusExercise()"></app-create-exercise>
+    }
+  </div>
+</section>
+
+<button id="add-exercise" (click)="addEmptyExercise()">
+  + Add Exercise
+</button>

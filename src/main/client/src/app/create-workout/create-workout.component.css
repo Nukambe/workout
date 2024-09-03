@@ -1,0 +1,19 @@
+form {
+  margin: 1em 0;
+}
+
+input[type="date"] {
+  user-select: none;
+}
+
+#add-exercise {
+  margin: 0.5em 0;
+}
+
+#exercises {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  overflow-y: scroll;
+  height: 300px;
+}

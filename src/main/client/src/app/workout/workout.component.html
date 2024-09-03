@@ -1,0 +1,14 @@
+<h1>{{workout?.name}}</h1>
+<hr>
+<section>
+  <h2>Exercises</h2>
+  <button (click)="createExercise()">
+    Add an exercise! +
+  </button>
+  @for (exercise of workout?.exercises; track $index) {
+    <app-exercise [exercise]="exercise" (editExercise)="createExercise(exercise)"></app-exercise>
+  } @empty {
+    <p>Add an exercise!</p>
+  }
+</section>
+<app-exercise-modal (exerciseCreated)="addExercise($event)"></app-exercise-modal>
