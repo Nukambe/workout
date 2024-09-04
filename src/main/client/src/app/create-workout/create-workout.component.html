@@ -20,7 +20,7 @@
   <div id="exercises">
     @for (exercise of workout.exercises; track $index) {
     <app-create-exercise [exercise]="exercise" [focused]="$index + 1 === focusedExercise" (open)="focusExercise($index)"
-      (close)="unfocusExercise()"></app-create-exercise>
+      (close)="unfocusExercise()" (delete)="deleteExercise($index)"></app-create-exercise>
     }
   </div>
 </section>

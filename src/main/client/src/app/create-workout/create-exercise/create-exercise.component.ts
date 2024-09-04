@@ -16,6 +16,7 @@ export class CreateExerciseComponent {
   @Input() focused: boolean = false;
   @Output() open: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() close: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() delete: EventEmitter<void> = new EventEmitter();
 
   addEmptySet() {
     const set = new Set();
@@ -34,5 +35,9 @@ export class CreateExerciseComponent {
   deleteSet(index: number) {
     this.exercise.sets.splice(index, 1);
     this.exercise.sets.forEach((set, i) => set.number = i + 1);
+  }
+
+  deleteExercise() {
+    this.delete.emit();
   }
 }

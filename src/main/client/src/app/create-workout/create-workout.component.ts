@@ -54,9 +54,13 @@ export class CreateWorkoutComponent {
     console.log(this.workout);
     this.workoutService.createWorkout(this.workout).subscribe(
       {
-        next: (res) => this.router.navigate(["log"]),
+        next: () => this.router.navigate(["log"]),
         error: (err) => console.error(err)
       }
     )
+  }
+
+  deleteExercise(index: number) {
+    this.workout.exercises.splice(index, 1);
   }
 }

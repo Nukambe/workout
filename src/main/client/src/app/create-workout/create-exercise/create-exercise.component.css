@@ -65,3 +65,13 @@ button {
     flex-wrap: wrap;
     gap: 0.5em;
 }
+
+.remove-button {
+    background-color: var(--primary-color);
+    width: 220px;
+    margin: auto;
+}
+
+.remove-button:hover {
+    background-color: var(--secondary-color);
+}
