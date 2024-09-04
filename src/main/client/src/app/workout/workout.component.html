@@ -14,7 +14,7 @@
 
 <section>
   @for (exercise of workout.exercises; track $index) {
-  <app-exercise [exercise]="exercise" (editExercise)="createExercise(exercise)"></app-exercise>
+  <app-exercise [exercise]="exercise"></app-exercise>
   } @empty {
   <p>Add an exercise!</p>
   }

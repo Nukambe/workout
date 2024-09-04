@@ -2,8 +2,6 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Workout} from "../models/Workout.model";
 import {WorkoutService} from "../services/workout.service";
 import {ActivatedRoute} from "@angular/router";
-import {ExerciseModalComponent} from "../exercise-modal/exercise-modal.component";
-import {Exercise} from "../models/Exercise.model";
 import {ExerciseComponent} from "../exercise/exercise.component";
 import { FormsModule } from '@angular/forms';
 import { CreateWorkoutComponent } from '../create-workout/create-workout.component';
@@ -13,7 +11,6 @@ import { CreateWorkoutComponent } from '../create-workout/create-workout.compone
   standalone: true,
   imports: [
     CreateWorkoutComponent,
-    ExerciseModalComponent,
     ExerciseComponent,
     FormsModule
   ],
@@ -22,7 +19,6 @@ import { CreateWorkoutComponent } from '../create-workout/create-workout.compone
 })
 export class WorkoutComponent implements OnInit {
 
-  @ViewChild(ExerciseModalComponent) exerciseModal!: ExerciseModalComponent;
   @ViewChild('dateInput') dateInput!: ElementRef<HTMLInputElement>;
   workout: Workout | null = null;
   id: string = "";
@@ -44,14 +40,6 @@ export class WorkoutComponent implements OnInit {
       },
       error: err => console.error(err)
     });
-  }
-
-  createExercise(exercise?: Exercise) {
-    if (exercise) {
-      this.exerciseModal.showModal(exercise, true);
-    } else {
-      this.exerciseModal.showModal(new Exercise(), false);
-    }
   }
 
   beginEdit() {
