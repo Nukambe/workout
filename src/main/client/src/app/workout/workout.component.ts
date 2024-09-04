@@ -21,20 +21,20 @@ export class WorkoutComponent implements OnInit {
   @ViewChild(ExerciseModalComponent) exerciseModal!: ExerciseModalComponent;
 
   workout: Workout | null = null;
-  id: number = 0;
+  id: string = "";
 
   constructor(private workoutService: WorkoutService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.id = parseInt(this.route.snapshot.paramMap.get('id') || "0");
+    this.id = this.route.snapshot.paramMap.get('id') || "";
     this.getWorkout();
   }
 
   getWorkout() {
     this.workoutService.getWorkout(this.id).subscribe({
       next: workout => {
-        console.log(workout);
+        workout.date = new Date(`${workout.date}T00:00:00Z`)
         this.workout = workout;
       },
       error: err => console.error(err)

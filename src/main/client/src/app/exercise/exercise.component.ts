@@ -15,12 +15,17 @@ export class ExerciseComponent {
 
   @Input() exercise!: Exercise;
   @Output() editExercise = new EventEmitter();
+  open: boolean = false;
 
   constructor() {
   }
 
   edit() {
     this.editExercise.emit();
+  }
+
+  openCloseExercise() {
+    this.open = !this.open;
   }
 
 }

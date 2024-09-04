@@ -1,18 +1,22 @@
-<hr>
-<div>
-  {{ exercise.name }}
-  <span>&downarrow;</span>
-  <button (click)="edit()">Edit</button>
-</div>
-<section>
+<button class="exercise-header" (click)="openCloseExercise()">
+  <h3>{{ exercise.name }}</h3>
+  <div class="dropdown-button">{{ open ? "&triangle;" : "&triangledown;" }}</div>
+</button>
+@if (open) {
+<section class="exercise-body">
+  <p class="note">{{ exercise.note }}</p>
+  <div class="max-weight">
+    MAX WEIGHT: <span>{{ exercise.maxWeight }} lbs</span>
+  </div>
   @for (set of exercise.sets; track $index) {
-    <div style="display: flex; justify-content: space-evenly; align-items: center">
-      SET {{ $index + 1 }}
-      <div>{{ set.ratio }}%</div>
-      <div>{{ ((set.ratio / 100) * exercise.maxWeight) | number:'1.2-2' }} lbs</div>
-      <div>REPS: {{ set.reps }}</div>
-    </div>
+  <div class="sets">
+    <div>SET {{ set.number }}</div>
+    <div style="width: 42px;">{{ set.ratio }}%</div>
+    <div style="width: 75px;">{{ ((set.ratio / 100) * exercise.maxWeight) | number:'1.2-2' }} lbs</div>
+    <div style="width: 71px;">REPS: {{ set.reps }}</div>
+  </div>
   } @empty {
-    <p>Add a set +</p>
+  <p>Add a set +</p>
   }
 </section>
+}

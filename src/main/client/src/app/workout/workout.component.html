@@ -1,14 +1,17 @@
-<h1>{{workout?.name}}</h1>
-<hr>
+@if (workout) {
+<time [dateTime]="workout.date.toUTCString()">
+  <h1>
+    {{ workout.date.toUTCString().slice(0, 16) }}
+  </h1>
+</time>
+<h2>{{workout.name}}</h2>
+
 <section>
-  <h2>Exercises</h2>
-  <button (click)="createExercise()">
-    Add an exercise! +
-  </button>
-  @for (exercise of workout?.exercises; track $index) {
-    <app-exercise [exercise]="exercise" (editExercise)="createExercise(exercise)"></app-exercise>
+  @for (exercise of workout.exercises; track $index) {
+  <app-exercise [exercise]="exercise" (editExercise)="createExercise(exercise)"></app-exercise>
   } @empty {
-    <p>Add an exercise!</p>
+  <p>Add an exercise!</p>
   }
 </section>
 <app-exercise-modal (exerciseCreated)="addExercise($event)"></app-exercise-modal>
+}

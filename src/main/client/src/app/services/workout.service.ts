@@ -26,8 +26,8 @@ export class WorkoutService {
     });
   }
 
-  getWorkout(id: number): Observable<Workout> {
-    return this.http.get<Workout>(this.baseUrl + `/${id}`, {
+  getWorkout(uuid: string): Observable<Workout> {
+    return this.http.get<Workout>(this.baseUrl + `/${uuid}`, {
       withCredentials: true
     });
   }

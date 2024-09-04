@@ -67,4 +67,9 @@ public class Exercise {
 
     public Double getMaxWeight() { return maxWeight; }
     public void setMaxWeight(Double maxWeight) { this.maxWeight = maxWeight; }
+
+    @Override
+    public String toString() {
+        return "Exercise [id=" + id + ", name=" + name + "]";
+    }
 }

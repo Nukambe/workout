@@ -31,7 +31,15 @@ public class WorkoutServiceImpl implements WorkoutService {
     @Override
     public void createWorkout(Workout workout, User user) {
         workout.setUser(user);
-        this.workoutRepository.save(workout);
+        Workout repoWorkout = this.workoutRepository.save(workout);
+        for (Exercise exercise : workout.getExercises()) {
+            exercise.setWorkout(repoWorkout);
+            Exercise repoExercise = this.exerciseRepository.save(exercise);
+            for (Sets set : exercise.getSets()) {
+                set.setExercise(repoExercise);
+                this.setsRepository.save(set);
+            }
+        }
     }
 
     @Override

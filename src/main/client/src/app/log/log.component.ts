@@ -29,7 +29,6 @@ export class LogComponent implements OnInit {
     this.workoutService.getWorkouts().subscribe({
       next: workouts => {
         this.workouts = workouts.map(workout => {
-          console.log(workout);
           workout.date = new Date(`${workout.date}T00:00:00Z`);
           return workout;
         })
