@@ -8,7 +8,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
 .exercise-name {
@@ -22,7 +22,7 @@ button {
 .exercise-body {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 0.5em;
 }
 
 .exercise-weight {

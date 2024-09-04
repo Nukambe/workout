@@ -31,13 +31,4 @@ export class LogComponent implements OnInit {
       error: err => console.error(err)
     });
   }
-
-  createWorkout() {
-    const workout = new Workout();
-    workout.name = this.name.getRawValue()!;
-    this.workoutService.createWorkout(workout).subscribe({
-      next: workouts => this.workouts = workouts,
-      error: err => console.error(err)
-    });
-  }
 }

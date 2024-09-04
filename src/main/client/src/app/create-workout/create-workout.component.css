@@ -17,3 +17,12 @@ input[type="date"] {
   overflow-y: scroll;
   height: 300px;
 }
+
+#add-create-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-create-buttons button {
+  margin: 0.5em 0;
+}

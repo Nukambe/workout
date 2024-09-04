@@ -1,11 +1,14 @@
 <div>
     <p>{{ set.number }}</p>
     <label>
-        <input type="number">
+        <input type="number" [(ngModel)]="set.ratio" [ngModelOptions]="{standalone: true}">
         %
     </label>
     <label>
-        <input type="number">
+        <input type="number" [(ngModel)]="set.reps" [ngModelOptions]="{standalone: true}">
         reps
     </label>
+    <button class="delete-button" (click)="deleteSet()">
+        <img src="/icons/trash.png" alt="Trashcan">
+    </button>
 </div>

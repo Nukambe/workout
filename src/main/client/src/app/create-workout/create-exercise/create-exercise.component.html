@@ -4,7 +4,7 @@
         <div>
             <label>
                 Name:
-                <input type="text">
+                <input type="text" [(ngModel)]="exercise.name" [ngModelOptions]="{standalone: true}">
             </label>
         </div>
         } @else {
@@ -18,11 +18,11 @@
     <div class="exercise-body">
         <label>
             Note
-            <input type="text">
+            <input type="text" [(ngModel)]="exercise.note" [ngModelOptions]="{standalone: true}" placeholder="Note...">
         </label>
         <div class="exercise-weight">
             <label>Max Weight:</label>
-            <input type="number">
+            <input type="number" [(ngModel)]="exercise.maxWeight" [ngModelOptions]="{standalone: true}">
             <div class="unit-buttons">
                 <button>
                     kg
@@ -39,7 +39,7 @@
             </div>
             <div class="sets-body">
                 @for (set of exercise.sets; track $index) {
-                <app-create-set [set]="set"></app-create-set>
+                <app-create-set [set]="set" (delete)="deleteSet($index)"></app-create-set>
                 }
             </div>
         </div>

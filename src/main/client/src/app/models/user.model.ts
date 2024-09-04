@@ -2,7 +2,7 @@ import {Workout} from "./Workout.model";
 
 export class User {
 
-  public id: string = "UUID";
+  public id: string = "";
   public name: string = "";
   public email: string = "";
   public emailVerified: boolean = false;

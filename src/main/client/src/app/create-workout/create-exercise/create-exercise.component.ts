@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Exercise } from '../../models/Exercise.model';
 import { CreateSetComponent } from '../create-set/create-set.component';
 import { Set } from '../../models/Set.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-exercise',
   standalone: true,
-  imports: [CreateSetComponent],
+  imports: [CreateSetComponent, FormsModule],
   templateUrl: './create-exercise.component.html',
   styleUrl: './create-exercise.component.css'
 })
@@ -28,5 +29,10 @@ export class CreateExerciseComponent {
 
   closeExercise() {
     this.close.emit(false);
+  }
+
+  deleteSet(index: number) {
+    this.exercise.sets.splice(index, 1);
+    this.exercise.sets.forEach((set, i) => set.number = i + 1);
   }
 }

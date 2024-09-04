@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {Workout} from "../models/Workout.model";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
+import { Workout } from "../models/Workout.model";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,10 @@ export class WorkoutService {
 
   constructor(private http: HttpClient) { }
 
-  createWorkout(workout: Workout): Observable<Workout[]> {
-    return this.http.post<Workout[]>(this.baseUrl, workout, {
-      withCredentials: true
+  createWorkout(workout: Workout) {
+    return this.http.post(this.baseUrl, workout, {
+      withCredentials: true,
+      observe: 'response'
     });
   }
 

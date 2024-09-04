@@ -44,13 +44,13 @@ public class WorkoutsController {
     }
 
     @PostMapping("")
-    public ResponseEntity<List<Workout>> createWorkout(@RequestBody Workout workout, HttpServletRequest request) {
+    public ResponseEntity<Void> createWorkout(@RequestBody Workout workout, HttpServletRequest request) {
         Optional<User> jwtUser = jwtUtil.getUserFromJwtToken(request.getCookies());
         if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
         User user = jwtUser.get();
         workoutService.createWorkout(workout, user);
-        return ResponseEntity.ok(workoutService.findWorkoutsByUser(user));
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")
