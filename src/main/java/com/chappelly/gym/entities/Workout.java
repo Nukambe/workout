@@ -43,6 +43,7 @@ public class Workout {
     @JsonInclude
     private Set<Exercise> exercises = new HashSet<>();
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "date")
     private Date date;
 

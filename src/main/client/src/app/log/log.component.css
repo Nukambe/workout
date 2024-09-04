@@ -1,6 +1,7 @@
-section {
+#workouts {
   display: flex;
   flex-direction: column;
+  gap: 1em;
 }
 
 #floating-action-button {

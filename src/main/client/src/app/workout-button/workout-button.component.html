@@ -1,3 +1,4 @@
 <button (click)="openWorkout()">
-  <ng-content></ng-content>
+  <p>{{ workout.name }}</p>
+  <time [dateTime]="workout.date.toUTCString()">{{ formatDate() }}</time>
 </button>
