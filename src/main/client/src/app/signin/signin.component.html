@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()" >
+  <label>
+    Email:
+    <input type="email" autocomplete="email" [formControl]="email">
+  </label>
+  <label>
+    Password:
+    <input type="password" autocomplete="password" [formControl]="password">
+  </label>
+  <button type="submit">Sign In</button>
+</form>

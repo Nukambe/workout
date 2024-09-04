@@ -1,0 +1,15 @@
+<h1>LOG</h1>
+<section id="workouts">
+  @for (workout of workouts; track $index) {
+  <app-workout-button [workout]="workout">
+    {{ $index + 1 }}. {{ workout.name }}
+  </app-workout-button>
+  } @empty {
+  <button routerLink="/log/create" id="empty-cta">
+    <p>CREATE A NEW WORKOUT!</p>
+  </button>
+  }
+</section>
+<button id="floating-action-button" routerLink="/log/create">
+  +
+</button>

@@ -1,0 +1,40 @@
+#workouts {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  overflow-y: scroll;
+  height: 600px;
+  border-radius: 1em;
+}
+
+#floating-action-button {
+  padding: 1em;
+  width: 2em;
+  height: 2em;
+  border: 2px solid var(--background-color);
+  border-radius: 100%;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  font-size: 2em;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#empty-cta {
+  background-color: unset;
+  margin: unset;
+  border: 2px dashed var(--primary-color);
+  border-radius: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+  opacity: 0.5;
+}
+
+#empty-cta:hover {
+  opacity: 1;
+}

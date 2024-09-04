@@ -1,0 +1,43 @@
+<h1>{{ workout.id === "" ? "CREATE" : "EDIT" }} WORKOUT</h1>
+
+<section>
+  <!-- <h2>WORKOUT</h2> -->
+  <form>
+    <label>
+      Name
+      <input type="text" [(ngModel)]="workout.name" [ngModelOptions]="{standalone: true}">
+    </label>
+    <label>
+      Date
+      <input type="date" #dateInput (click)="openDatePicker($event)" [value]="workout.date.toISOString().slice(0, 10)"
+        (input)="onDateInput($event)">
+    </label>
+  </form>
+</section>
+
+<section>
+  <h2>EXERCISES</h2>
+  <div id="exercises">
+    @for (exercise of workout.exercises; track $index) {
+    <app-create-exercise [exercise]="exercise" [focused]="$index + 1 === focusedExercise" (open)="focusExercise($index)"
+      (close)="unfocusExercise()" (delete)="deleteExercise($index)"></app-create-exercise>
+    }
+  </div>
+</section>
+
+<div id="add-create-buttons">
+  <button id="add-exercise" (click)="addEmptyExercise()">
+    + Add Exercise
+  </button>
+
+  <div id="create-cancel-buttons">
+    <button (click)="workout.id === '' ? createWorkout() : editWorkout()">
+      {{ workout.id === "" ? "CREATE" : "SAVE" }}
+    </button>
+    @if (workout.id !== "") {
+    <button (click)="cancelEdit()">
+      CANCEL
+    </button>
+    }
+  </div>
+</div>

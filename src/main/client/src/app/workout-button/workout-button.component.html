@@ -1,0 +1,4 @@
+<button (click)="openWorkout()">
+  <p>{{ workout.name }}</p>
+  <time [dateTime]="workout.date.toUTCString()">{{ formatDate() }}</time>
+</button>

@@ -1,0 +1,33 @@
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2em;
+    font-size: small;
+}
+
+input {
+    width: 48px;
+}
+
+p {
+    margin: 0;
+    text-align: center;
+    width: 48px;
+    padding: 0 12px;
+}
+
+.delete-button {
+    margin-top: 4px;
+    width: 74px;
+    padding: 6px 12px;
+}
+
+button img {
+    width: 24px;
+    height: 24px;
+}

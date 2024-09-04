@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSubmit()">
+  <label>
+    Name
+    <input type="text" autocomplete="name" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}">
+  </label>
+  <label>
+    Email
+    <input type="email" autocomplete="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
+  </label>
+  <label>
+    Password
+    <input type="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
+  </label>
+  <label>
+    Confirm Password
+    <input type="password" [(ngModel)]="user.confirmPassword" [ngModelOptions]="{standalone: true}">
+  </label>
+  <button type="submit">SIGN UP</button>
+</form>
