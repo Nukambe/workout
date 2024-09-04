@@ -30,7 +30,14 @@
     + Add Exercise
   </button>
 
-  <button (click)="workout.id === '' ? createWorkout() : editWorkout()">
-    {{ workout.id === "" ? "CREATE" : "SAVE" }}
-  </button>
+  <div id="create-cancel-buttons">
+    <button (click)="workout.id === '' ? createWorkout() : editWorkout()">
+      {{ workout.id === "" ? "CREATE" : "SAVE" }}
+    </button>
+    @if (workout.id !== "") {
+    <button (click)="cancelEdit()">
+      CANCEL
+    </button>
+    }
+  </div>
 </div>

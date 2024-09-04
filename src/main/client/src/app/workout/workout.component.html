@@ -1,11 +1,16 @@
 @if (workout) {
 @if (!edit) {
-<time [dateTime]="workout.date.toUTCString()">
-  <h1>
-    {{ workout.date.toUTCString().slice(0, 16) }}
-  </h1>
-</time>
-<h2>{{workout.name}}</h2>
+<section id="workout-header">
+  <time [dateTime]="workout.date.toUTCString()">
+    <h1>
+      {{ workout.date.toUTCString().slice(0, 16) }}
+    </h1>
+  </time>
+  <button id="edit-button" (click)="beginEdit()">
+    <img src="/icons/pencil.svg" alt="Pencil">
+  </button>
+</section>
+  <h2>{{workout.name}}</h2>
 
 <section>
   @for (exercise of workout.exercises; track $index) {
@@ -15,6 +20,6 @@
   }
 </section>
 } @else {
-  <app-create-workout [workout]="workout" (saved)="finishEdit()"></app-create-workout>
+  <app-create-workout [workout]="workout" (saved)="finishEdit()" (cancel)="finishEdit()"></app-create-workout>
 }
 }

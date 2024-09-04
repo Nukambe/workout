@@ -1,0 +1,15 @@
+#workout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#edit-button {
+    margin: unset;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

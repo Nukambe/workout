@@ -17,6 +17,7 @@ export class CreateWorkoutComponent {
 
   @Input() workout: Workout = new Workout();
   @Output() saved: EventEmitter<void> = new EventEmitter();
+  @Output() cancel: EventEmitter<void> = new EventEmitter();
   @ViewChild('dateInput') dateInput!: ElementRef<HTMLInputElement>;
   focusedExercise: number = 0;
 
@@ -64,6 +65,10 @@ export class CreateWorkoutComponent {
         error: (err) => console.log(err)
       }
     );
+  }
+
+  cancelEdit() {
+    this.cancel.emit();
   }
 
   deleteExercise(index: number) {

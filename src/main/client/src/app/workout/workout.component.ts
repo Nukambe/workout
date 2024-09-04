@@ -26,7 +26,7 @@ export class WorkoutComponent implements OnInit {
   @ViewChild('dateInput') dateInput!: ElementRef<HTMLInputElement>;
   workout: Workout | null = null;
   id: string = "";
-  edit: boolean = true;
+  edit: boolean = false;
 
   constructor(private workoutService: WorkoutService, private route: ActivatedRoute) {
   }
