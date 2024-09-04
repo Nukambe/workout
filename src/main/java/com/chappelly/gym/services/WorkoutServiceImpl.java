@@ -43,21 +43,8 @@ public class WorkoutServiceImpl implements WorkoutService {
     }
 
     @Override
-    @Transactional
-    public Workout updateWorkout(Workout newWorkout, User user) {
-        Workout workout = this.workoutRepository.findWorkoutByUserAndId(user, newWorkout.getId());
-        this.exerciseRepository.deleteAllByWorkout(workout);
-
-        for (Exercise exercise : newWorkout.getExercises()) {
-            exercise.setId(null);
-            exercise.setWorkout(workout);
-            exercise = this.exerciseRepository.save(exercise);
-            for (Sets set : exercise.getSets()) {
-                set.setExercise(exercise);
-                this.setsRepository.save(set);
-            }
-        }
-        return workout;
+    public void updateWorkout(Workout workout, User user) {
+        createWorkout(workout, user);
     }
 
     @Override

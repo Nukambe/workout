@@ -32,10 +32,10 @@ export class WorkoutService {
     });
   }
 
-  saveWorkout(workout: Workout): Observable<Workout> {
-    console.log("saving:", workout);
-    return this.http.put<Workout>(this.baseUrl + `/${workout.id}`, workout, {
-      withCredentials: true
+  saveWorkout(workout: Workout) {
+    return this.http.put(this.baseUrl, workout, {
+      withCredentials: true,
+      observe: 'response'
     });
   }
 }

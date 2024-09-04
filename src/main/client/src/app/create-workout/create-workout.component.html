@@ -1,4 +1,4 @@
-<h1>CREATE WORKOUT</h1>
+<h1>{{ workout.id === "" ? "CREATE" : "EDIT" }} WORKOUT</h1>
 
 <section>
   <!-- <h2>WORKOUT</h2> -->
@@ -30,7 +30,7 @@
     + Add Exercise
   </button>
 
-  <button (click)="createWorkout()">
-    CREATE
+  <button (click)="workout.id === '' ? createWorkout() : editWorkout()">
+    {{ workout.id === "" ? "CREATE" : "SAVE" }}
   </button>
 </div>

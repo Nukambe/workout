@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Workout } from "../models/Workout.model";
 import { Exercise } from "../models/Exercise.model";
 import { CreateExerciseComponent } from './create-exercise/create-exercise.component';
@@ -15,14 +15,12 @@ import { Router } from '@angular/router';
 })
 export class CreateWorkoutComponent {
 
-  workout: Workout = new Workout();
+  @Input() workout: Workout = new Workout();
+  @Output() saved: EventEmitter<void> = new EventEmitter();
   @ViewChild('dateInput') dateInput!: ElementRef<HTMLInputElement>;
   focusedExercise: number = 0;
 
   constructor(private workoutService: WorkoutService, private router: Router) {
-    this.workout = new Workout();
-    this.workout.name = "new workout";
-    this.workout.date = new Date();
   }
 
   openDatePicker(event: Event) {
@@ -51,13 +49,21 @@ export class CreateWorkoutComponent {
   }
 
   createWorkout() {
-    console.log(this.workout);
     this.workoutService.createWorkout(this.workout).subscribe(
       {
         next: () => this.router.navigate(["log"]),
         error: (err) => console.error(err)
       }
-    )
+    );
+  }
+
+  editWorkout() {
+    this.workoutService.saveWorkout(this.workout).subscribe(
+      {
+        next: () => this.saved.emit(),
+        error: (err) => console.log(err)
+      }
+    );
   }
 
   deleteExercise(index: number) {

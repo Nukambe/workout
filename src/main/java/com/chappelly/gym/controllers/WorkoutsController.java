@@ -53,13 +53,13 @@ public class WorkoutsController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Workout> updateWorkout(@PathVariable Long id, @RequestBody Workout newWorkout, HttpServletRequest request) {
+    @PutMapping("")
+    public ResponseEntity<Void> updateWorkout(@RequestBody Workout workout, HttpServletRequest request) {
         Optional<User> jwtUser = jwtUtil.getUserFromJwtToken(request.getCookies());
         if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
         User user = jwtUser.get();
-        Workout workout = this.workoutService.updateWorkout(newWorkout, user);
-        return ResponseEntity.ok(workout);
+        this.workoutService.updateWorkout(workout, user);
+        return ResponseEntity.ok().build();
     }
 }

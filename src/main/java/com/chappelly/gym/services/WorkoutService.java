@@ -10,5 +10,5 @@ public interface WorkoutService {
     public List<Workout> findWorkoutsByUser(User user);
     public Workout findWorkoutByUserAndId(User user, UUID id);
     public void createWorkout(Workout workout, User user);
-    public Workout updateWorkout(Workout workout, User user);
+    public void updateWorkout(Workout workout, User user);
 }

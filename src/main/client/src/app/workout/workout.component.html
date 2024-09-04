@@ -1,4 +1,5 @@
 @if (workout) {
+@if (!edit) {
 <time [dateTime]="workout.date.toUTCString()">
   <h1>
     {{ workout.date.toUTCString().slice(0, 16) }}
@@ -13,5 +14,7 @@
   <p>Add an exercise!</p>
   }
 </section>
-<app-exercise-modal (exerciseCreated)="addExercise($event)"></app-exercise-modal>
+} @else {
+  <app-create-workout [workout]="workout" (saved)="finishEdit()"></app-create-workout>
+}
 }
