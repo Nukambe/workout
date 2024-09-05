@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Workout} from "../models/Workout.model";
 import {WorkoutService} from "../services/workout.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ExerciseComponent} from "../exercise/exercise.component";
 import { FormsModule } from '@angular/forms';
 import { CreateWorkoutComponent } from '../create-workout/create-workout.component';
@@ -24,11 +24,11 @@ export class WorkoutComponent implements OnInit {
   id: string = "";
   edit: boolean = false;
 
-  constructor(private workoutService: WorkoutService, private route: ActivatedRoute) {
+  constructor(private workoutService: WorkoutService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id') || "";
+    this.id = this.activatedRoute.snapshot.paramMap.get('id') || "";
     this.getWorkout();
   }
 
@@ -48,5 +48,12 @@ export class WorkoutComponent implements OnInit {
 
   finishEdit() {
     this.edit = false;
+  }
+
+  deleteWorkout() {
+    this.workoutService.deleteWorkout(this.workout!.id).subscribe({
+      next: () => this.router.navigate(["log"]),
+      error: (err) => console.error(err)
+    });
   }
 }

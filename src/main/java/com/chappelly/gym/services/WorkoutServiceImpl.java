@@ -51,4 +51,10 @@ public class WorkoutServiceImpl implements WorkoutService {
     public Workout findWorkoutByUserAndId(User user, UUID id) {
         return this.workoutRepository.findWorkoutByUserAndId(user, id);
     }
+
+    @Override
+    public void deleteWorkout(UUID id, User user) {
+        Workout workout = this.workoutRepository.findWorkoutByUserAndId(user, id);
+        workoutRepository.delete(workout);
+    }
 }

@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-#edit-button {
+#edit-button, #delete-button {
     margin: unset;
     padding: 0;
     width: 32px;

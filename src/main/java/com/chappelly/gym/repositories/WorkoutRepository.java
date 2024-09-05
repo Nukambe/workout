@@ -12,5 +12,4 @@ import java.util.UUID;
 public interface WorkoutRepository extends JpaRepository<Workout, UUID> {
     public List<Workout> findWorkoutsByUserOrderByCreatedAtDesc(User user);
     public Workout findWorkoutByUserAndId(User user, UUID id);
-    public void deleteWorkoutByUserAndId(User user, UUID id);
 }

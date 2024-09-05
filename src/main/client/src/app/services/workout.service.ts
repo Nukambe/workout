@@ -38,4 +38,11 @@ export class WorkoutService {
       observe: 'response'
     });
   }
+
+  deleteWorkout(id: string) {
+    return this.http.delete(this.baseUrl + `/${id}`, {
+      withCredentials: true,
+      observe: 'response'
+    })
+  }
 }

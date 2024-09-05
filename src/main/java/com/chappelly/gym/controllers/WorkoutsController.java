@@ -62,4 +62,14 @@ public class WorkoutsController {
         this.workoutService.updateWorkout(workout, user);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteWorkout(@PathVariable UUID id, HttpServletRequest request) {
+        Optional<User> jwtUser = jwtUtil.getUserFromJwtToken(request.getCookies());
+        if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
+        User user = jwtUser.get();
+        this.workoutService.deleteWorkout(id, user);
+        return ResponseEntity.ok().build();
+    }
 }
