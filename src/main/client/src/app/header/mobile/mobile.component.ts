@@ -1,8 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import { RouterModule } from '@angular/router';
-import { tick } from '@angular/core/testing';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mobile',
@@ -15,6 +13,7 @@ import { Title } from '@angular/platform-browser';
   styleUrl: './mobile.component.css'
 })
 export class MobileComponent {
+
   open: boolean = false;
   routes: { title: string, link: string }[] = [
     { title: "LOG", link: "/log" },
@@ -22,15 +21,23 @@ export class MobileComponent {
     { title: "SIGN OUT", link: "/signout" }
   ];
 
+  constructor() { }
+
   openCloseMenu() {
-    this.open = !this.open;
+    if (this.open) {
+      this.closeMenu();
+    } else {
+      this.openMenu();
+    }
   }
 
   openMenu() {
     this.open = true;
+    document.body.classList.add('no-scroll');
   }
 
   closeMenu() {
     this.open = false;
+    document.body.classList.remove('no-scroll');
   }
 }
