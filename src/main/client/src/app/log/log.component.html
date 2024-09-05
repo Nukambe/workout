@@ -1,6 +1,16 @@
 <h1>LOG</h1>
+<div id="search">
+  <label>
+    Search
+    <input type="search" [(ngModel)]="searchQuery" (keyup.enter)="searchText()">
+  </label>
+  <label>
+    Date
+    <input type="date" (input)="searchDate($event)">
+  </label>
+</div>
 <section id="workouts">
-  @for (workout of workouts; track $index) {
+  @for (workout of filteredWorkouts; track $index) {
   <app-workout-button [workout]="workout">
     {{ $index + 1 }}. {{ workout.name }}
   </app-workout-button>
