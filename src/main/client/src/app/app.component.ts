@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
-import {HeaderComponent} from "./header/header.component";
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { HeaderComponent } from "./header/header.component";
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -13,30 +13,49 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
 
   loggedIn: boolean = false;
-  unprotectedRoutes: string[] = ["/signup", "/signin", "/signout"];
+  unprotectedRoutes: string[] = ["/signup", "/signin"];
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
-      if (!this.loggedIn) {
-        if (event instanceof NavigationEnd) {
-          if (!this.unprotectedRoutes.includes(this.router.url)) {
-            this.checkAuthState();
+      if (event instanceof NavigationEnd) {
+        if (this.unprotectedRoutes.includes(this.router.url)) {
+          if (this.loggedIn) {
+            this.router.navigate(["log"]);
+          } else {
+            this.autoSignIn();
+          }
+        } else {
+          if (!this.loggedIn) {
+            this.checkAuthState("signin");
           }
         }
       }
     });
   }
 
-  checkAuthState() {
+  autoSignIn() {
+    this.authService.refresh().subscribe({
+      next: () => {
+        this.loggedIn = true;
+        this.router.navigate(["log"]);
+      },
+      error: (err) => {
+        console.error(err);
+        this.loggedIn = false;
+      }
+    });
+  }
+
+  checkAuthState(route: string) {
     this.authService.refresh().subscribe({
       next: () => this.loggedIn = true,
       error: (err) => {
         console.error(err);
         this.loggedIn = false;
-        this.router.navigate(["signin"]);
+        this.router.navigate([route]);
       }
-    })
+    });
   }
 }

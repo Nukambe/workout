@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
@@ -11,11 +11,19 @@ import {Router, RouterModule} from "@angular/router";
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css'
 })
-export class SigninComponent {
+export class SigninComponent implements OnInit {
   email = new FormControl("");
   password = new FormControl("");
 
   constructor(private authService: AuthService, private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.autoSignIn();
+  }
+
+  autoSignIn() {
+    
   }
 
   onSubmit() {
