@@ -38,4 +38,17 @@ export class WorkoutService {
       observe: 'response'
     });
   }
+
+  deleteWorkout(id: string) {
+    return this.http.delete(this.baseUrl + `/${id}`, {
+      withCredentials: true,
+      observe: 'response'
+    })
+  }
+
+  searchWorkouts(query: { start?: string, end?: string }): Observable<Workout[]> {
+    return this.http.get<Workout[]>(this.baseUrl + `/search?${new URLSearchParams(query)}`, {
+      withCredentials: true
+    })
+  }
 }

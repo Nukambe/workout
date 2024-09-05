@@ -1,17 +1,17 @@
-<nav>
-  <button>
-<!--    <img ngSrc="/icons/hamburger.png" alt="Hamburger menu" height="32" width="32">-->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width="32"
-      height="32"
-      fill="var(--primary-color)"
-    >
+<nav [classList]="open ? 'open' : ''">
+  <button (click)="openCloseMenu()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="var(--primary-color)">
       <rect x="3" y="5" width="18" height="2" />
       <rect x="3" y="11" width="18" height="2" />
       <rect x="3" y="17" width="18" height="2" />
     </svg>
   </button>
   <p>GYM LOG</p>
+  @if (open) {
+  <ul>
+    @for (route of routes; track $index) {
+    <li><a [routerLink]="route.link" (click)="closeMenu()">{{ route.title }}</a></li>
+    }
+  </ul>
+  }
 </nav>

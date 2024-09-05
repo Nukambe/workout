@@ -20,7 +20,9 @@ import {WorkoutButtonComponent} from "../workout-button/workout-button.component
 export class LogComponent implements OnInit {
 
   workouts: Workout[] = [];
+  filteredWorkouts: Workout[] = [];
   name = new FormControl("")!;
+  searchQuery: string = ""
 
   constructor(private workoutService: WorkoutService) {
   }
@@ -31,10 +33,25 @@ export class LogComponent implements OnInit {
         this.workouts = workouts.map(workout => {
           workout.date = new Date(`${workout.date}T00:00:00Z`);
           return workout;
-        })
+        });
+        this.filteredWorkouts = this.workouts;
       }
       ,
       error: err => console.error(err)
     });
+  }
+
+  searchText() {
+    this.filteredWorkouts = this.workouts.filter(workout => workout.name.includes(this.searchQuery));
+  }
+
+  searchDate(event: Event) {
+    const dateInput = (event.target as HTMLInputElement).value;
+    console.log(dateInput);
+    this.searchText();
+    if (dateInput) {
+      const date = new Date(dateInput);
+      this.filteredWorkouts = this.filteredWorkouts.filter(workout => workout.date.toUTCString() === date.toUTCString());
+    }
   }
 }

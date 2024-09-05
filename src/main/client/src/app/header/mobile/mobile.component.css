@@ -5,6 +5,19 @@ nav {
   padding: 0.5em 1em;
   box-shadow: 0 0.1em 0.2em var(--box-shadow-color);
   font-size: x-large;
+  transition: height linear 2s;
+}
+
+nav.open {
+  height: 100vh;
+  position: relative;
+  z-index: 1000;
+  background-color: var(--secondary-color);
+  align-items: flex-start;
+}
+
+::ng-deep body.no-scroll {
+  overflow: hidden;
 }
 
 p {
@@ -12,8 +25,34 @@ p {
   color: var(--text-color);
 }
 
+nav.open p {
+  padding: 17px 0;
+}
+
 button {
   margin: unset;
   background-color: unset;
   border: unset;
+}
+
+ul {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  text-align: center;
+  color: var(--background-color);
+}
+
+a, a:visited {
+  color: unset;
+  text-decoration: none;
 }

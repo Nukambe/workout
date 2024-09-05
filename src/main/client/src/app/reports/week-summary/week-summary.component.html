@@ -1,0 +1,32 @@
+<h1>WEEK SUMMARY</h1>
+
+<section id="workouts">
+    @for (workout of workouts; track $index) {
+        <section class="workout">
+            <div class="workout-header">
+                <h2>{{ workout.name }}</h2>
+                <time [dateTime]="workout.date">{{ workout.date }}</time>
+            </div>
+
+            <div class="workout-body">
+                <ul>
+                    @for (exercise of workout.exercises; track $index) {
+                        <li>
+                            <p>
+                                {{ exercise.name }}: Max Weight = {{ exercise.maxWeight }} lbs
+                                @for (set of exercise.sets; track $index) {
+                                    <div>[Set {{ set.number }}: {{ set.reps + " reps @" }} {{ set.ratio / 100 * exercise.maxWeight }} lbs] </div>
+                                } @empty {
+                                    <div>[No sets]</div>
+                                }
+                            </p>
+                        </li>
+                    } @empty {
+                        <li>No exercises</li>
+                    }
+                </ul>
+            </div>
+
+        </section>
+        }
+</section>

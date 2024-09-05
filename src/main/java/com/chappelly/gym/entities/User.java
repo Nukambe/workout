@@ -6,10 +6,7 @@ import org.hibernate.annotations.CurrentTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -57,7 +54,7 @@ public class User {
     private Date updated;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<Workout> workouts = new HashSet<>();
+    List<Workout> workouts = new ArrayList<>();
 
     @Transient
     private String password;
@@ -123,8 +120,8 @@ public class User {
     public String getPasswordResetToken() { return passwordResetToken; }
     public void setPasswordResetToken(String passwordResetToken) { this.passwordResetToken = passwordResetToken; }
 
-    public Set<Workout> getWorkouts() { return workouts; }
-    public void setWorkouts(Set<Workout> workouts) { this.workouts = workouts; }
+    public List<Workout> getWorkouts() { return workouts; }
+    public void setWorkouts(List<Workout> workouts) { this.workouts = workouts; }
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }

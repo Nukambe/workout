@@ -7,7 +7,10 @@ import com.chappelly.gym.repositories.WorkoutRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -25,7 +28,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 
     @Override
     public List<Workout> findWorkoutsByUser(User user) {
-        return this.workoutRepository.findWorkoutsByUserOrderByCreatedAtDesc(user);
+        return this.workoutRepository.findWorkoutsByUserOrderByDateDesc(user);
     }
 
     @Override
@@ -44,11 +47,40 @@ public class WorkoutServiceImpl implements WorkoutService {
 
     @Override
     public void updateWorkout(Workout workout, User user) {
-        createWorkout(workout, user);
+        Workout repoWorkout = this.workoutRepository.findWorkoutByUserAndId(user, workout.getId());
+        this.exerciseRepository.deleteAll(repoWorkout.getExercises());
+        for (Exercise exercise : workout.getExercises()) {
+            exercise.setId(null);
+            exercise.setWorkout(repoWorkout);
+            Exercise repoExercise = this.exerciseRepository.save(exercise);
+            for (Sets set : exercise.getSets()) {
+                set.setId(null);
+                set.setExercise(repoExercise);
+                this.setsRepository.save(set);
+            }
+        }
     }
 
     @Override
     public Workout findWorkoutByUserAndId(User user, UUID id) {
         return this.workoutRepository.findWorkoutByUserAndId(user, id);
+    }
+
+    @Override
+    public void deleteWorkout(UUID id, User user) {
+        Workout workout = this.workoutRepository.findWorkoutByUserAndId(user, id);
+        workoutRepository.delete(workout);
+    }
+
+    @Override
+    public List<Workout> findWorkoutsInDateRange(User user, String startDate, String endDate) {
+        Date start = convertISOToDate(startDate);
+        Date end = convertISOToDate(endDate);
+        return this.workoutRepository.findWorkoutsByUserAndDateBetween(user, end, start);
+    }
+
+    private Date convertISOToDate(String iso) {
+        Instant instant = Instant.parse(iso);
+        return Date.from(instant);
     }
 }

@@ -6,10 +6,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "exercises")
@@ -46,7 +43,7 @@ public class Exercise {
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @OrderBy("number ASC")
     @JsonInclude
-    private Set<Sets> sets = new HashSet<>();
+    private List<Sets> sets = new ArrayList<>();
 
     public Exercise() {}
 
@@ -62,8 +59,8 @@ public class Exercise {
     public Workout getWorkout() { return this.workout; }
     public void setWorkout(Workout workout) { this.workout = workout; }
 
-    public Set<Sets> getSets() { return this.sets; }
-    public void setSets(Set<Sets> sets) { this.sets = sets; }
+    public List<Sets> getSets() { return this.sets; }
+    public void setSets(List<Sets> sets) { this.sets = sets; }
 
     public Double getMaxWeight() { return maxWeight; }
     public void setMaxWeight(Double maxWeight) { this.maxWeight = maxWeight; }

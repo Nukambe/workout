@@ -26,4 +26,18 @@ export class AuthService {
       observe: "response"
     });
   }
+
+  signOut() {
+    return this.http.delete(this.baseUrl, {
+      withCredentials: true,
+      observe: 'response'
+    })
+  }
+
+  refresh() {
+    return this.http.get(this.baseUrl, {
+      withCredentials: true,
+      observe: 'response'
+    });
+  }
 }

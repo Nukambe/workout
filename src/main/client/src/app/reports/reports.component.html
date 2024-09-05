@@ -1,0 +1,7 @@
+<h1>REPORTS</h1>
+
+<section>
+    @for (report of reports; track $index) {
+        <a [routerLink]="report.link">{{ report.title }}</a>
+    }
+</section>

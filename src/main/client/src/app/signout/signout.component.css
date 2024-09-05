@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+
+a {
+    width: 200px;
+    margin: auto;
+    display: block;
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 1em;
+    border-radius: var(--border-radius);
+    color: var(--background-color);
+    font-weight: var(--bold);
+}

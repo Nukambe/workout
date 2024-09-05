@@ -18,7 +18,7 @@ public class Sets {
     private Short number;
 
     @Column(name = "reps")
-    private Short reps = 0;
+    private String reps = "0";
 
     @Column(name = "ratio")
     private Double ratio = 100.0;
@@ -33,8 +33,8 @@ public class Sets {
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
 
-    public Short getReps() { return reps; }
-    public void setReps(Short reps) { this.reps = reps; }
+    public String getReps() { return reps; }
+    public void setReps(String reps) { this.reps = reps; }
 
     public Double getRatio() { return ratio; }
     public void setRatio(Double ratio) { this.ratio = ratio; }
