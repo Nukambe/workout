@@ -26,4 +26,11 @@ export class AuthService {
       observe: "response"
     });
   }
+
+  refresh() {
+    return this.http.get(this.baseUrl, {
+      withCredentials: true,
+      observe: 'response'
+    });
+  }
 }

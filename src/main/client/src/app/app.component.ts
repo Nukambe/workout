@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, RouterOutlet} from '@angular/router';
 import {HeaderComponent} from "./header/header.component";
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,4 @@ import {HeaderComponent} from "./header/header.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'gymnav';
 }
