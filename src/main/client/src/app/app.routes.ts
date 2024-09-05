@@ -13,10 +13,10 @@ export const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "signin", component: SigninComponent },
   { path: "signup", component: SignupComponent },
-  { path: "signout", component: SignoutComponent, canActivate: [loggedInGuard] },
-  { path: "log", component: LogComponent, canActivate: [loggedInGuard] },
-  { path: "log/create", component: CreateWorkoutComponent, canActivate: [loggedInGuard] },
-  { path: "log/:id", component: WorkoutComponent, canActivate: [loggedInGuard] },
-  { path: "reports", component: ReportsComponent, canActivate: [loggedInGuard] },
+  { path: "signout", component: SignoutComponent },
+  { path: "log", component: LogComponent },
+  { path: "log/create", component: CreateWorkoutComponent },
+  { path: "log/:id", component: WorkoutComponent },
+  { path: "reports", component: ReportsComponent },
   { path: "**", redirectTo: "" }
 ];
