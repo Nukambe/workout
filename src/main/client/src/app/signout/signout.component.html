@@ -1,1 +1,8 @@
-<p>signout works!</p>
+@if (signedOut) {
+    <h1>You have been signed out!</h1>
+    <a routerLink="/signin">
+        Sign In
+    </a>
+} @else {
+    <h1>Signing Out...</h1>
+}

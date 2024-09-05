@@ -27,6 +27,13 @@ export class AuthService {
     });
   }
 
+  signOut() {
+    return this.http.delete(this.baseUrl, {
+      withCredentials: true,
+      observe: 'response'
+    })
+  }
+
   refresh() {
     return this.http.get(this.baseUrl, {
       withCredentials: true,

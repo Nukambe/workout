@@ -26,6 +26,8 @@ export class AppComponent implements OnInit {
           } else {
             this.autoSignIn(); // no - confirm with server if jwt is valid
           }
+        } else if (this.router.url === "/signout") {
+          this.loggedIn = false;
         } else { // is route protected?
           if (!this.loggedIn) { // is user logged in?
             this.checkAuthState(); // no - confirm with server if jwt is valid

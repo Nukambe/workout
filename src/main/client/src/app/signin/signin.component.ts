@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
@@ -11,19 +11,11 @@ import {Router, RouterModule} from "@angular/router";
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css'
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent {
   email = new FormControl("");
   password = new FormControl("");
 
   constructor(private authService: AuthService, private router: Router) {
-  }
-
-  ngOnInit(): void {
-    this.autoSignIn();
-  }
-
-  autoSignIn() {
-    
   }
 
   onSubmit() {
@@ -35,7 +27,7 @@ export class SigninComponent implements OnInit {
     } else {
       this.authService.signIn({ email, password }).subscribe(
         {
-          next: res => res.ok ? this.router.navigate(["/log"]) : console.log(res.status),
+          next: () => this.router.navigate(["/log"]),
           error: err => console.error(err)
         });
     }

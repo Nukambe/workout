@@ -60,6 +60,18 @@ public class AuthController {
         return ResponseEntity.badRequest().body("ERROR: Signup Failed!");
     }
 
+    @DeleteMapping("")
+    public ResponseEntity<Void> signout(HttpServletResponse response) {
+        Cookie cookie = new Cookie("JWT_TOKEN", "");
+        cookie.setHttpOnly(true);
+        cookie.setSecure(isProduction);
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+        cookie.setAttribute("SameSite", "Strict");
+        response.addCookie(cookie);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
     private void setJwtCookie(String jwt, HttpServletResponse response) {
         Cookie cookie = new Cookie("JWT_TOKEN", jwt);
         cookie.setHttpOnly(true);
