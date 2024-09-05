@@ -45,4 +45,10 @@ export class WorkoutService {
       observe: 'response'
     })
   }
+
+  searchWorkouts(query: { start?: string, end?: string }): Observable<Workout[]> {
+    return this.http.get<Workout[]>(this.baseUrl + `/search?${new URLSearchParams(query)}`, {
+      withCredentials: true
+    })
+  }
 }

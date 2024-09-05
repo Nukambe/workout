@@ -19,42 +19,42 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        if (this.unprotectedRoutes.includes(this.router.url)) {
-          if (this.loggedIn) {
-            this.router.navigate(["log"]);
+      if (event instanceof NavigationEnd) { // is navigation ending?
+        if (this.unprotectedRoutes.includes(this.router.url)) { // is route /signin or /signup?
+          if (this.loggedIn) { // is user logged in?
+            this.router.navigate(["log"]); // yes - go to /log
           } else {
-            this.autoSignIn();
+            this.autoSignIn(); // no - confirm with server if jwt is valid
           }
-        } else {
-          if (!this.loggedIn) {
-            this.checkAuthState("signin");
+        } else { // is route protected?
+          if (!this.loggedIn) { // is user logged in?
+            this.checkAuthState(); // no - confirm with server if jwt is valid
           }
         }
       }
     });
   }
 
-  autoSignIn() {
+  autoSignIn() { // called when navigating to /signin or /signup
     this.authService.refresh().subscribe({
-      next: () => {
+      next: () => { // jwt is valid, log in, navigate to /log
         this.loggedIn = true;
         this.router.navigate(["log"]);
       },
-      error: (err) => {
+      error: (err) => { // jwt is not valid, stay here
         console.error(err);
         this.loggedIn = false;
       }
     });
   }
 
-  checkAuthState(route: string) {
+  checkAuthState() { // called when navigating to protected route
     this.authService.refresh().subscribe({
-      next: () => this.loggedIn = true,
-      error: (err) => {
+      next: () => this.loggedIn = true, // jwt is valid, log in, continue
+      error: (err) => { // jwt is not valid, log out, navigate to /signin
         console.error(err);
         this.loggedIn = false;
-        this.router.navigate([route]);
+        this.router.navigate(["signin"]);
       }
     });
   }

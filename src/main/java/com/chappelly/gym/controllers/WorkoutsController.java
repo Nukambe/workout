@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -71,5 +73,18 @@ public class WorkoutsController {
         User user = jwtUser.get();
         this.workoutService.deleteWorkout(id, user);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Workout>> searchWorkouts(
+            @RequestParam("start") String start,
+            @RequestParam("end") String end,
+            HttpServletRequest request
+    ) {
+        Optional<User> jwtUser = jwtUtil.getUserFromJwtToken(request.getCookies());
+        if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
+        User user = jwtUser.get();
+        return ResponseEntity.ok(this.workoutService.findWorkoutsInDateRange(user, start, end));
     }
 }

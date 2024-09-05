@@ -7,7 +7,10 @@ import com.chappelly.gym.repositories.WorkoutRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -56,5 +59,17 @@ public class WorkoutServiceImpl implements WorkoutService {
     public void deleteWorkout(UUID id, User user) {
         Workout workout = this.workoutRepository.findWorkoutByUserAndId(user, id);
         workoutRepository.delete(workout);
+    }
+
+    @Override
+    public List<Workout> findWorkoutsInDateRange(User user, String startDate, String endDate) {
+        Date start = convertISOToDate(startDate);
+        Date end = convertISOToDate(endDate);
+        return this.workoutRepository.findWorkoutsByUserAndDateBetween(user, end, start);
+    }
+
+    private Date convertISOToDate(String iso) {
+        Instant instant = Instant.parse(iso);
+        return Date.from(instant);
     }
 }

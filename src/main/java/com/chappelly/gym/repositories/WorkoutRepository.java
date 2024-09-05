@@ -5,6 +5,7 @@ import com.chappelly.gym.entities.Workout;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,4 +13,5 @@ import java.util.UUID;
 public interface WorkoutRepository extends JpaRepository<Workout, UUID> {
     public List<Workout> findWorkoutsByUserOrderByCreatedAtDesc(User user);
     public Workout findWorkoutByUserAndId(User user, UUID id);
+    public List<Workout> findWorkoutsByUserAndDateBetween(User user, Date end, Date start);
 }

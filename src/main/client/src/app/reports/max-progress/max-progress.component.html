@@ -1,0 +1,12 @@
+<h1>MAX WEIGHT PROGRESS</h1>
+
+<section>
+    @for (record of records; track $index) {
+        <h2>{{ record.name }}</h2>
+        <ul>
+            @for (date of record.weightRecords; track $index) {
+                <li>{{ date.date }}: {{ date.weight }} lbs</li>
+            }
+        </ul>
+        }
+</section>
