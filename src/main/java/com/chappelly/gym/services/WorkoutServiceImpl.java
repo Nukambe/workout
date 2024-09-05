@@ -28,7 +28,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 
     @Override
     public List<Workout> findWorkoutsByUser(User user) {
-        return this.workoutRepository.findWorkoutsByUserOrderByCreatedAtDesc(user);
+        return this.workoutRepository.findWorkoutsByUserOrderByDateDesc(user);
     }
 
     @Override
@@ -47,7 +47,18 @@ public class WorkoutServiceImpl implements WorkoutService {
 
     @Override
     public void updateWorkout(Workout workout, User user) {
-        createWorkout(workout, user);
+        Workout repoWorkout = this.workoutRepository.findWorkoutByUserAndId(user, workout.getId());
+        this.exerciseRepository.deleteAll(repoWorkout.getExercises());
+        for (Exercise exercise : workout.getExercises()) {
+            exercise.setId(null);
+            exercise.setWorkout(repoWorkout);
+            Exercise repoExercise = this.exerciseRepository.save(exercise);
+            for (Sets set : exercise.getSets()) {
+                set.setId(null);
+                set.setExercise(repoExercise);
+                this.setsRepository.save(set);
+            }
+        }
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Repository
 public interface WorkoutRepository extends JpaRepository<Workout, UUID> {
-    public List<Workout> findWorkoutsByUserOrderByCreatedAtDesc(User user);
+    public List<Workout> findWorkoutsByUserOrderByDateDesc(User user);
     public Workout findWorkoutByUserAndId(User user, UUID id);
     public List<Workout> findWorkoutsByUserAndDateBetween(User user, Date end, Date start);
 }

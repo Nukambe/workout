@@ -27,7 +27,7 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Override
     public List<MaxProgressRecord> getMaxProgressRecords(User user) {
         Map<String, MaxProgressRecord> maxProgressRecords = new HashMap<>();
-        List<Workout> workouts = workoutRepository.findWorkoutsByUserOrderByCreatedAtDesc(user);
+        List<Workout> workouts = workoutRepository.findWorkoutsByUserOrderByDateDesc(user);
         for (Workout workout : workouts) {
             for (Exercise exercise : workout.getExercises()) {
                 MaxProgressRecord record;

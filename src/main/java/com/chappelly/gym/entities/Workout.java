@@ -6,10 +6,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "workouts")
@@ -39,9 +36,8 @@ public class Workout {
     private Date updatedAt;
 
     @OneToMany(mappedBy = "workout", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @OrderBy("id ASC")
     @JsonInclude
-    private Set<Exercise> exercises = new HashSet<>();
+    private List<Exercise> exercises = new ArrayList<>();
 
     @Temporal(TemporalType.DATE)
     @Column(name = "date")
@@ -58,8 +54,8 @@ public class Workout {
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
 
-    public Set<Exercise> getExercises() { return exercises; }
-    public void setExercises(Set<Exercise> exercises) { this.exercises = exercises; }
+    public List<Exercise> getExercises() { return exercises; }
+    public void setExercises(List<Exercise> exercises) { this.exercises = exercises; }
 
     public Date getDate() { return date; }
     public void setDate(Date date) { this.date = date; }
