@@ -8,10 +8,7 @@ import com.chappelly.gym.repositories.ExerciseRepository;
 import com.chappelly.gym.repositories.WorkoutRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
@@ -41,7 +38,8 @@ public class ExerciseServiceImpl implements ExerciseService {
                 }
             }
         }
-
-        return new ArrayList<>(maxProgressRecords.values());
+        ArrayList<MaxProgressRecord> records = new ArrayList<>(maxProgressRecords.values());
+        records.sort(Comparator.comparing(MaxProgressRecord::getName));
+        return records;
     }
 }
