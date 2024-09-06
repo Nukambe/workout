@@ -3,7 +3,7 @@ import {SigninComponent} from "./signin/signin.component";
 import {SignupComponent} from "./signup/signup.component";
 import {LogComponent} from "./log/log.component";
 import {WorkoutComponent} from "./workout/workout.component";
-import {HomeComponent} from "./home/home.component";
+// import {HomeComponent} from "./home/home.component";
 import {CreateWorkoutComponent} from "./create-workout/create-workout.component";
 // import { loggedInGuard } from './guards/logged-in.guard';
 import { ReportsComponent } from './reports/reports.component';
@@ -12,7 +12,7 @@ import { WeekSummaryComponent } from './reports/week-summary/week-summary.compon
 import { MaxProgressComponent } from './reports/max-progress/max-progress.component';
 
 export const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "", redirectTo: "/signin", pathMatch: "full" },
   { path: "signin", component: SigninComponent },
   { path: "signup", component: SignupComponent },
   { path: "signout", component: SignoutComponent },
