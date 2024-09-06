@@ -1,3 +1,10 @@
 #body-container {
   padding: 0 1em;
 }
+
+@media screen and (min-width: 720px) {
+  #body-container {
+    max-width: 1000px;
+    margin: auto;
+  }
+}

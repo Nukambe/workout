@@ -15,11 +15,7 @@ import { RouterModule } from '@angular/router';
 export class MobileComponent {
 
   open: boolean = false;
-  routes: { title: string, link: string }[] = [
-    { title: "LOG", link: "/log" },
-    { title: "REPORTS", link: "/reports" },
-    { title: "SIGN OUT", link: "/signout" }
-  ];
+  @Input() routes: { title: string, link: string }[] = [];
 
   constructor() { }
 

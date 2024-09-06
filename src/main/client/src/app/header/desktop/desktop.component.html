@@ -1,6 +1,8 @@
 <nav>
   <p>GYM LOG</p>
   <ul>
-    <li><a routerLink="/log">LOG</a></li>
+    @for (route of routes; track $index) {
+      <li><a [routerLink]="route.link">{{ route.title }}</a></li>
+    }
   </ul>
 </nav>

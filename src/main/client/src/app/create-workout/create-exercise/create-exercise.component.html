@@ -10,9 +10,9 @@
         } @else {
         <p (click)="openExercise()" class="exercise-name">{{ exercise.name }}</p>
         }
-        <p (click)="focused ? closeExercise() : openExercise()">
-            {{ focused ? "&uparrow;" : "&downarrow;" }}
-        </p>
+        <button (click)="focused ? closeExercise() : openExercise()">
+            {{ focused ? "&triangle;" : "&triangledown;" }}
+        </button>
     </div>
     @if (focused) {
     <div class="exercise-body">
@@ -24,12 +24,12 @@
             <label>Max Weight:</label>
             <input type="number" [(ngModel)]="exercise.maxWeight" [ngModelOptions]="{standalone: true}">
             <div class="unit-buttons">
-                <button>
+                <!-- <button>
                     kg
                 </button>
                 <button>
                     lb
-                </button>
+                </button> -->
             </div>
         </div>
         <div>

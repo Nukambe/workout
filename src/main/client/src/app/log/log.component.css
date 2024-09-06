@@ -53,3 +53,23 @@
 #empty-cta:hover {
   opacity: 1;
 }
+
+@media screen and (min-width: 720px) {
+  #workouts {
+    overflow-y: auto;
+    height: fit-content;
+    padding-bottom: 3em;
+  }
+
+  #search input[type="search"] {
+    width: 500px;
+  }
+
+  #search input[type="date"] {
+    width: 128px;
+  }
+
+  #floating-action-button {
+    position: fixed;
+  }
+}

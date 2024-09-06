@@ -13,5 +13,9 @@ import {DesktopComponent} from "./desktop/desktop.component";
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  routes: { title: string, link: string }[] = [
+    { title: "LOG", link: "/log" },
+    { title: "REPORTS", link: "/reports" },
+    { title: "SIGN OUT", link: "/signout" }
+  ];
 }
