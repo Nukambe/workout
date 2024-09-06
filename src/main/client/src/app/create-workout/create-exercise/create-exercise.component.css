@@ -17,6 +17,8 @@ button {
 
 .exercise-header button {
     margin-top: auto;
+    font-size: 3em;
+    padding: 0;
 }
 
 .exercise-body {

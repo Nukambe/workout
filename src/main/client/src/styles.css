@@ -10,6 +10,7 @@
   --border: 1px solid var(--primary-color);
   --box-shadow-color: rgba(241, 196, 15, 0.25);
   --bold: 800;
+  --desktop: 720px;
 }
 
 html {
@@ -90,4 +91,8 @@ input:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px var(--box-shadow-color);
   outline: none;
+}
+
+@media screen and (min-width: 720px) {
+  
 }

@@ -32,3 +32,10 @@ input[type="date"] {
   display: flex;
   gap: 1em;
 }
+
+@media screen and (min-width: 720px) {
+  #exercises {
+    overflow: auto;
+    height: fit-content;
+  }
+}

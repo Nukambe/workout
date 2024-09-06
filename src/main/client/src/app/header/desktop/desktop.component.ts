@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {RouterLink} from "@angular/router";
 
 @Component({
@@ -11,5 +11,5 @@ import {RouterLink} from "@angular/router";
   styleUrl: './desktop.component.css'
 })
 export class DesktopComponent {
-
+  @Input() routes: { title: string, link: string }[] = []
 }
