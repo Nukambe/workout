@@ -72,6 +72,7 @@ export class CreateWorkoutComponent {
   }
 
   deleteExercise(index: number) {
+    this.unfocusExercise()
     this.workout.exercises.splice(index, 1);
   }
 

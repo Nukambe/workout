@@ -1,0 +1,11 @@
+<div id="modal" class="modal-backdrop">
+    <div class="modal-content">
+        <h2>{{ title }}</h2>
+        <ng-content></ng-content>
+        <hr>
+        <div class="modal-buttons">
+            <button class="modal-confirm" (click)="onConfirm()">Confirm</button>
+            <button class="modal-deny" (click)="onDeny()">Deny</button>
+        </div>
+    </div>
+</div>
