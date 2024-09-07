@@ -12,7 +12,7 @@
   <div class="sets">
     <div>SET {{ set.number }}</div>
     <div style="width: 42px;">{{ set.ratio }}%</div>
-    <div style="width: 75px;">{{ ((set.ratio / 100) * exercise.maxWeight) | number:'1.2-2' }} lbs</div>
+    <div style="width: 75px;">{{ ((set.ratio / 100) * exercise.maxWeight) | number:'1.0-0' }} lbs</div>
     <div style="width: 85px;">REPS: {{ set.reps }}</div>
   </div>
   } @empty {

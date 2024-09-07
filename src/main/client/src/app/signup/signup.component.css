@@ -10,3 +10,8 @@ p {
 a {
     text-decoration: underline;
 }
+
+button:disabled {
+    pointer-events: none;
+    opacity: 60%;
+}

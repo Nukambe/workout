@@ -50,6 +50,11 @@ button {
   transition: background-color 0.3s, transform 0.2s;
 }
 
+button:disabled {
+  pointer-events: none;
+  opacity: 60%;
+}
+
 button:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color);
@@ -94,5 +99,5 @@ input:focus {
 }
 
 @media screen and (min-width: 720px) {
-  
+
 }
