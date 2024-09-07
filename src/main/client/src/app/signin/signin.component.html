@@ -1,16 +1,23 @@
 <h1>GYM LOG</h1>
 <h2>SIGN IN</h2>
 
-<form (ngSubmit)="onSubmit()" >
+<form (ngSubmit)="onSubmit()" #form="ngForm">
   <label>
     Email:
-    <input type="email" autocomplete="email" [formControl]="email">
+    <input type="email" autocomplete="email" [(ngModel)]="user.email" name="email" #email="ngModel" required email>
   </label>
+  <div *ngIf="email.invalid && email.touched">
+    <small *ngIf="email.errors?.['required']">Email is required.</small>
+    <small *ngIf="email.errors?.['email']">Please enter a valid email address.</small>
+  </div>
   <label>
     Password:
-    <input type="password" autocomplete="password" [formControl]="password">
+    <input type="password" autocomplete="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
   </label>
-  <button type="submit">Sign In</button>
+  <div *ngIf="password.invalid && password.touched">
+    <small>Password is required.</small>
+  </div>
+  <button type="submit" [disabled]="form.invalid">Sign In</button>
 </form>
 
 <p>

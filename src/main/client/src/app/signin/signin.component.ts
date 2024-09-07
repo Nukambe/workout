@@ -3,6 +3,7 @@ import {CommonModule} from "@angular/common";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {Router, RouterModule} from "@angular/router";
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-signin',
@@ -12,24 +13,21 @@ import {Router, RouterModule} from "@angular/router";
   styleUrl: './signin.component.css'
 })
 export class SigninComponent {
-  email = new FormControl("");
-  password = new FormControl("");
+
+  user: User = new User();
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
   onSubmit() {
-    const email = this.email.getRawValue();
-    const password = this.password.getRawValue()
+    this.signIn();
+  }
 
-    if (!email || !password) {
-      alert("Please enter an Email and Password");
-    } else {
-      this.authService.signIn({ email, password }).subscribe(
-        {
-          next: () => this.router.navigate(["/log"]),
-          error: err => console.error(err)
-        });
-    }
+  signIn() {
+    this.authService.signIn({ email: this.user.email, password: this.user.password }).subscribe(
+      {
+        next: () => this.router.navigate(["/log"]),
+        error: err => console.error(err)
+      });
   }
 }
