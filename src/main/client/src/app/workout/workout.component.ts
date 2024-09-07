@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ExerciseComponent} from "../exercise/exercise.component";
 import { FormsModule } from '@angular/forms';
 import { CreateWorkoutComponent } from '../create-workout/create-workout.component';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-workout',
@@ -12,7 +13,8 @@ import { CreateWorkoutComponent } from '../create-workout/create-workout.compone
   imports: [
     CreateWorkoutComponent,
     ExerciseComponent,
-    FormsModule
+    FormsModule,
+    ConfirmModalComponent
   ],
   templateUrl: './workout.component.html',
   styleUrl: './workout.component.css'
@@ -23,6 +25,7 @@ export class WorkoutComponent implements OnInit {
   workout: Workout | null = null;
   id: string = "";
   edit: boolean = false;
+  confirmDelete: boolean = false;
 
   constructor(private workoutService: WorkoutService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -55,5 +58,13 @@ export class WorkoutComponent implements OnInit {
       next: () => this.router.navigate(["log"]),
       error: (err) => console.error(err)
     });
+  }
+
+  openDeleteModal() {
+    this.confirmDelete = true;
+  }
+
+  closeDeleteModal() {
+    this.confirmDelete = false;
   }
 }

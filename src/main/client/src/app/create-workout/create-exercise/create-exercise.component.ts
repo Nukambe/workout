@@ -4,11 +4,12 @@ import { CreateSetComponent } from '../create-set/create-set.component';
 import { Set } from '../../models/Set.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-create-exercise',
   standalone: true,
-  imports: [CreateSetComponent, FormsModule, CommonModule],
+  imports: [CreateSetComponent, FormsModule, CommonModule, ConfirmModalComponent],
   templateUrl: './create-exercise.component.html',
   styleUrl: './create-exercise.component.css'
 })
@@ -18,6 +19,7 @@ export class CreateExerciseComponent {
   @Output() open: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() close: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() delete: EventEmitter<void> = new EventEmitter();
+  confirmDelete: boolean = false;
 
   addEmptySet() {
     const set = new Set();
@@ -40,5 +42,13 @@ export class CreateExerciseComponent {
 
   deleteExercise() {
     this.delete.emit();
+  }
+
+  openDeleteModal() {
+    this.confirmDelete = true;
+  }
+
+  closeDeleteModal() {
+    this.confirmDelete = false;
   }
 }
