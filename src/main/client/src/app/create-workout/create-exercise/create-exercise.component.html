@@ -2,13 +2,16 @@
     <div class="exercise-header">
         @if (focused) {
         <div>
-            <label>
-                Name:
-                <input type="text" [(ngModel)]="exercise.name" [ngModelOptions]="{standalone: true}">
-            </label>
+                <label>
+                    Name:
+                    <input type="text" [(ngModel)]="exercise.name" name="name" #name="ngModel" required placeholder="Exercise Name...">
+                </label>
+                <div *ngIf="name.invalid && name.touched">
+                    <small>Name is required.</small>
+                </div>
         </div>
         } @else {
-        <p (click)="openExercise()" class="exercise-name">{{ exercise.name }}</p>
+        <p (click)="openExercise()" class="exercise-name">{{ exercise.name? exercise.name : "New Exercise" }}</p>
         }
         <button (click)="focused ? closeExercise() : openExercise()">
             {{ focused ? "&triangle;" : "&triangledown;" }}

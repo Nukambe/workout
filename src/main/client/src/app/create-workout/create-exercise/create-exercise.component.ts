@@ -3,11 +3,12 @@ import { Exercise } from '../../models/Exercise.model';
 import { CreateSetComponent } from '../create-set/create-set.component';
 import { Set } from '../../models/Set.model';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-exercise',
   standalone: true,
-  imports: [CreateSetComponent, FormsModule],
+  imports: [CreateSetComponent, FormsModule, CommonModule],
   templateUrl: './create-exercise.component.html',
   styleUrl: './create-exercise.component.css'
 })

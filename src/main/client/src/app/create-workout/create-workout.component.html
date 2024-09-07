@@ -31,7 +31,7 @@
   </button>
 
   <div id="create-cancel-buttons">
-    <button (click)="workout.id === '' ? createWorkout() : editWorkout()">
+    <button [disabled]="canCreate()" (click)="workout.id === '' ? createWorkout() : editWorkout()">
       {{ workout.id === "" ? "CREATE" : "SAVE" }}
     </button>
     @if (workout.id !== "") {
@@ -40,4 +40,7 @@
     </button>
     }
   </div>
+  @if (canCreate()) {
+    <p>Not all exercises have a name!</p>
+  }
 </div>

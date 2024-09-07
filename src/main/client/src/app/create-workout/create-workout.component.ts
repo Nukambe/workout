@@ -74,4 +74,8 @@ export class CreateWorkoutComponent {
   deleteExercise(index: number) {
     this.workout.exercises.splice(index, 1);
   }
+
+  canCreate() {
+    return !this.workout.exercises.every(exercise => exercise.name !== "");
+  }
 }
