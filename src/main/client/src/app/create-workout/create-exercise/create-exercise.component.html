@@ -40,6 +40,7 @@
             <div class="sets-header">
                 <h3>SETS</h3>
                 <button (click)="addEmptySet()">+</button>
+                <button class="import-button" (click)="openImportModal()">Import</button>
             </div>
             <div class="sets-body">
                 @for (set of exercise.sets; track $index) {
@@ -55,4 +56,7 @@
 <app-confirm-modal title="Delete Exercise?" (confirm)="deleteExercise()" (deny)="closeDeleteModal()">
     <p>Are you sure you want to delete this exercise?</p>
 </app-confirm-modal>
+}
+@if (confirmImport) {
+    <app-import-sets (add)="addImportSets($event)" (replace)="replaceImportSets($event)" (close)="closeImportModal()"></app-import-sets>
 }

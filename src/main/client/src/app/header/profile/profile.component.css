@@ -9,6 +9,7 @@ nav {
     border: 2px solid var(--secondary-color);
     color: var(--background-color);
     padding: 1em 2em;
+    width: max-content;
 }
 
 p {
@@ -63,7 +64,6 @@ a:hover {
         border: 2px solid var(--secondary-color);
         color: var(--background-color);
         padding: 1em 2em;
-        width: max-content;
     }
 
     #profile-container {

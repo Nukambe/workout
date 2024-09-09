@@ -1,0 +1,19 @@
+.modal-buttons button {
+    width: 110px;
+    border: 1px solid var(--background-color);
+    margin: 1em;
+}
+
+#close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: unset;
+    font-size: xx-large;
+    padding: 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

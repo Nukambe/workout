@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { RouterModule } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class ProfileComponent {
 
+  @ViewChild('profileContainer') profileContainer: ElementRef = new ElementRef(HTMLDivElement);
   open: boolean = false;
 
   constructor(private authService: AuthService) { }
@@ -25,5 +26,13 @@ export class ProfileComponent {
 
   getUser() {
     return this.authService.getUser();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: Event) {
+    const profile = this.profileContainer.nativeElement.contains(event.target);
+    if (!profile) {
+      this.closeProfile();
+    }
   }
 }

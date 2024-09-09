@@ -77,3 +77,12 @@ button {
 .remove-button:hover {
     background-color: var(--secondary-color);
 }
+
+.import-button {
+    margin-left: auto;
+    background-color: var(--primary-color);
+}
+
+.import-button:hover {
+    color: var(--background-color);
+}
