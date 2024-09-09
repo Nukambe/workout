@@ -15,7 +15,7 @@
 </section>
   <h2>{{workout.name}}</h2>
 
-<section>
+<section id="workout-body">
   @for (exercise of workout.exercises; track $index) {
   <app-exercise [exercise]="exercise"></app-exercise>
   } @empty {
