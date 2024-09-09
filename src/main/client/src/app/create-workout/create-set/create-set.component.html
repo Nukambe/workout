@@ -1,12 +1,16 @@
 <div>
     <p>{{ set.number }}</p>
     <label>
-        <input type="number" [(ngModel)]="set.ratio" [ngModelOptions]="{standalone: true}">
+        <input type="number" min="0" max="32767" [(ngModel)]="set.ratio" [ngModelOptions]="{standalone: true}">
         %
     </label>
     <label>
-        <input type="text" [(ngModel)]="set.reps" [ngModelOptions]="{standalone: true}">
+        <input type="text" min="0" max="32767" [(ngModel)]="set.reps" [ngModelOptions]="{standalone: true}">
         reps
+    </label>
+    <label>
+        <input type="number" min="1" max="32767" [(ngModel)]="set.repeat" [ngModelOptions]="{standalone: true}">
+        repeat
     </label>
     <button class="delete-button" (click)="deleteSet()">
         <img src="/icons/trash.png" alt="Trashcan">

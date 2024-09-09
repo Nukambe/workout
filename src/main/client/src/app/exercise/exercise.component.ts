@@ -21,6 +21,7 @@ export class ExerciseComponent {
 
   openCloseExercise() {
     this.open = !this.open;
+    // console.log(this.exercise);
   }
 
 }

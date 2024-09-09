@@ -26,7 +26,7 @@
         </label>
         <div class="exercise-weight">
             <label>Max Weight:</label>
-            <input type="number" [(ngModel)]="exercise.maxWeight" [ngModelOptions]="{standalone: true}">
+            <input type="number" min="0" [(ngModel)]="exercise.maxWeight" [ngModelOptions]="{standalone: true}">
             <div class="unit-buttons">
                 <!-- <button>
                     kg

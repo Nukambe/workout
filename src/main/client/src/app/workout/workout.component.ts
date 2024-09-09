@@ -40,6 +40,7 @@ export class WorkoutComponent implements OnInit {
       next: workout => {
         workout.date = new Date(`${workout.date}T00:00:00Z`)
         this.workout = workout;
+        // console.log(workout);
       },
       error: err => console.error(err)
     });
