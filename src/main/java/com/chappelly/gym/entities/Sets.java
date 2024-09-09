@@ -23,6 +23,9 @@ public class Sets {
     @Column(name = "ratio")
     private Double ratio = 100.0;
 
+    @Column(name = "repeat")
+    private Short repeat = 1;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "exercise_id", nullable = false)
     @JsonIgnore
@@ -44,4 +47,7 @@ public class Sets {
 
     public Exercise getExercise() { return exercise; }
     public void setExercise(Exercise exercise) { this.exercise = exercise; }
+
+    public Short getRepeat() { return repeat; }
+    public void setRepeat(Short repeat) { this.repeat = repeat; }
 }

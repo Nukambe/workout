@@ -27,7 +27,10 @@ export class SigninComponent {
     this.authService.signIn({ email: this.user.email, password: this.user.password }).subscribe(
       {
         next: () => this.router.navigate(["/log"]),
-        error: err => console.error(err)
+        error: err => {
+          console.error(err);
+          alert("Email or Password is incorrect!");
+        }
       });
   }
 }
