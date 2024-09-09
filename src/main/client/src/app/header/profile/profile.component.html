@@ -1,0 +1,14 @@
+<div id="profile-container">
+    <button id="profile-button" (click)="openCloseProfile()">
+        <img id="profile-img" [src]="getUser()?.avatarUrl" alt="Avatar" width="32px">
+    </button>
+    @if (getUser() && open) {
+    <nav>
+        <p>Hello, {{ getUser()?.name }}!</p>
+        <hr>
+        <ul>
+            <a routerLink="/signout">SIGN OUT</a>
+        </ul>
+    </nav>
+    }
+</div>

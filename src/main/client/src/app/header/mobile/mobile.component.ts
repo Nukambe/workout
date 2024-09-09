@@ -1,14 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import { RouterModule } from '@angular/router';
+import { ProfileComponent } from "../profile/profile.component";
 
 @Component({
   selector: 'app-mobile',
   standalone: true,
   imports: [
     NgOptimizedImage,
-    RouterModule
-  ],
+    RouterModule,
+    ProfileComponent
+],
   templateUrl: './mobile.component.html',
   styleUrl: './mobile.component.css'
 })

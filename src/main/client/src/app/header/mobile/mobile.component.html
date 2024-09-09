@@ -12,6 +12,7 @@
     @for (route of routes; track $index) {
     <li><a [routerLink]="route.link" (click)="closeMenu()">{{ route.title }}</a></li>
     }
+    <li><app-profile></app-profile></li>
   </ul>
   }
 </nav>

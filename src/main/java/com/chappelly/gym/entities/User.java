@@ -1,5 +1,6 @@
 package com.chappelly.gym.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.CurrentTimestamp;
@@ -30,7 +31,7 @@ public class User {
     private String passwordHash;
 
     @Column(name = "avatar_url", nullable = false)
-    private String avatarUrl = "https://gym-nav.chappelly.com/default-avatar.png";
+    private String avatarUrl = "https://gym.chappelly.com/default-avatar.png";
 
     @Temporal(TemporalType.DATE)
     @CurrentTimestamp
@@ -54,6 +55,7 @@ public class User {
     private Date updated;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     List<Workout> workouts = new ArrayList<>();
 
     @Transient
@@ -74,6 +76,7 @@ public class User {
         this.password = null;
     }
 
+    @JsonIgnore
     public User getSafeUser() {
         User user = new User();
         user.setId(this.id);

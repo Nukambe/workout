@@ -29,7 +29,7 @@ public class AuthController {
     private final boolean isProduction = "production".equals(System.getenv("ENV"));
 
     @GetMapping("")
-    public ResponseEntity<Void> refreshToken(HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity<User> refreshToken(HttpServletRequest request, HttpServletResponse response) {
         Optional<User> jwtUser = jwtUtil.getUserFromJwtToken(request.getCookies());
         if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
@@ -37,18 +37,18 @@ public class AuthController {
         String jwt = jwtUtil.generateJwtToken(user.getEmail());
         setJwtCookie(jwt, response);
 
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.ok(user.getSafeUser());
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<?> signin(@RequestBody LoginRequest loginRequest, HttpServletResponse response) {
+    public ResponseEntity<User> signin(@RequestBody LoginRequest loginRequest, HttpServletResponse response) {
         User user = userService.signIn(loginRequest.getEmail(), loginRequest.getPassword());
         if (user == null) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
         String jwt = jwtUtil.generateJwtToken(user.getEmail());
         setJwtCookie(jwt, response);
 
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.ok(user.getSafeUser());
     }
 
     @PostMapping("/signup")
