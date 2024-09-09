@@ -1,0 +1,21 @@
+<app-modal (closeModal)="closeModal()">
+    <button id="close-button" (click)="closeModal()">
+        X
+    </button>
+    <h2>Import Sets</h2>
+    <hr>
+    <label>
+        <small>
+            <sub>
+                Format: "[REPS] x [REPEAT] &#64; [RATIO]%"
+            </sub>
+        </small>
+        <textarea [(ngModel)]="importText" placeholder="Paste text here..." (input)="evaluateImport()"
+            [rows]="importedSets.length"></textarea>
+        @if (invalidImport) {Invalid Import!}
+    </label>
+    <div class="modal-buttons">
+        <button class="modal-add" (click)="addSets()">ADD</button>
+        <button class="modal-replace" (click)="replaceSets()">REPLACE</button>
+    </div>
+</app-modal>

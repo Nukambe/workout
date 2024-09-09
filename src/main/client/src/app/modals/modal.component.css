@@ -8,13 +8,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
 
-hr {
-    border-color: black;
-}
-
-.modal-content {
+  .modal-content {
     color: var(--background-color);
     background-color: var(--primary-color);
     padding: 20px;
@@ -22,27 +18,5 @@ hr {
     width: 300px;
     text-align: center;
     z-index: 10;
-}
-
-.modal-buttons {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.modal-buttons button {
-    margin: 0;
-    color: var(--background-color);
-}
-
-.modal-buttons button:hover {
-    color: var(--primary-color);
-}
-
-.modal-confirm {
-    background-color: #4CAF50;
-}
-
-.modal-deny {
-    background-color: #F44336;
-}
+    position: relative;
+  }

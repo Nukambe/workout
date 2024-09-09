@@ -1,11 +1,11 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Workout} from "../models/Workout.model";
-import {WorkoutService} from "../services/workout.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ExerciseComponent} from "../exercise/exercise.component";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Workout } from "../models/Workout.model";
+import { WorkoutService } from "../services/workout.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ExerciseComponent } from "../exercise/exercise.component";
 import { FormsModule } from '@angular/forms';
 import { CreateWorkoutComponent } from '../create-workout/create-workout.component';
-import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
+import { ConfirmModalComponent } from '../modals/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-workout',

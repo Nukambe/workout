@@ -4,12 +4,13 @@ import { CreateSetComponent } from '../create-set/create-set.component';
 import { Set } from '../../models/Set.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
+import { ConfirmModalComponent } from '../../modals/confirm-modal/confirm-modal.component';
+import { ImportSetsComponent } from '../../modals/import-sets/import-sets.component';
 
 @Component({
   selector: 'app-create-exercise',
   standalone: true,
-  imports: [CreateSetComponent, FormsModule, CommonModule, ConfirmModalComponent],
+  imports: [CreateSetComponent, FormsModule, CommonModule, ConfirmModalComponent, ImportSetsComponent],
   templateUrl: './create-exercise.component.html',
   styleUrl: './create-exercise.component.css'
 })
@@ -20,6 +21,7 @@ export class CreateExerciseComponent {
   @Output() close: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() delete: EventEmitter<void> = new EventEmitter();
   confirmDelete: boolean = false;
+  confirmImport: boolean = false;
 
   addEmptySet() {
     const set = new Set();
@@ -50,5 +52,26 @@ export class CreateExerciseComponent {
 
   closeDeleteModal() {
     this.confirmDelete = false;
+  }
+
+  openImportModal() {
+    this.confirmImport = true;
+  }
+
+  closeImportModal() {
+    this.confirmImport = false;
+  }
+
+  addImportSets(sets: Set[]) {
+    sets.forEach(set => {
+      set.number = this.exercise.sets.length + 1;
+      this.exercise.sets.push(set);
+    });
+    this.closeImportModal();
+  }
+
+  replaceImportSets(sets: Set[]) {
+    this.exercise.sets = sets;
+    this.closeImportModal();
   }
 }
