@@ -10,6 +10,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { SignoutComponent } from './signout/signout.component';
 import { WeekSummaryComponent } from './reports/week-summary/week-summary.component';
 import { MaxProgressComponent } from './reports/max-progress/max-progress.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 export const routes: Routes = [
   { path: "", redirectTo: "/signin", pathMatch: "full" },
@@ -22,5 +23,6 @@ export const routes: Routes = [
   { path: "reports", component: ReportsComponent },
   { path: "reports/week-summary", component: WeekSummaryComponent },
   { path: "reports/max-progress", component: MaxProgressComponent },
+  { path: "profile", component: EditProfileComponent },
   { path: "**", redirectTo: "" }
 ];

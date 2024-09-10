@@ -7,7 +7,8 @@
         <p>Hello, {{ getUser()?.name }}!</p>
         <hr>
         <ul>
-            <a routerLink="/signout">SIGN OUT</a>
+            <li><a #link routerLink="/profile">PROFILE</a></li>
+            <li><a #link routerLink="/signout">SIGN OUT</a></li>
         </ul>
     </nav>
     }
