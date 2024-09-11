@@ -1,6 +1,6 @@
-#profile-container {
+#profile-container-desktop {
+    display: none;
     position: relative;
-    height: 300px;
 }
 
 nav {
@@ -27,6 +27,7 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+    list-style: none;
 }
 
 button {
@@ -70,8 +71,13 @@ a:hover {
         padding: 1em 2em;
     }
 
-    #profile-container {
+    #profile-container-desktop {
+        display: block;
         position: relative;
         height: fit-content;
+    }
+
+    #profile-container-mobile {
+        display: none;
     }
 }

@@ -1,6 +1,8 @@
-@if (loggedIn) {
-<app-header></app-header>
-}
-<div id="body-container">
-  <router-outlet></router-outlet>
+<div id="flipflop">
+  @if (getUser()) {
+  <app-header></app-header>
+  }
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 </div>

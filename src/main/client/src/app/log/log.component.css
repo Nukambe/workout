@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 1em;
   overflow-y: scroll;
-  height: 520px;
+  height: 540px;
   border-radius: 1em;
 }
 
@@ -29,7 +29,7 @@
   border: 2px solid var(--background-color);
   border-radius: 100%;
   position: absolute;
-  bottom: 1em;
+  bottom: 3em;
   right: 1em;
   font-size: 2em;
   margin: 0;
@@ -58,7 +58,7 @@
   #workouts {
     overflow-y: auto;
     height: fit-content;
-    padding-bottom: 3em;
+    padding-bottom: 5em;
   }
 
   #search input[type="search"] {
@@ -71,5 +71,6 @@
 
   #floating-action-button {
     position: fixed;
+    bottom: 1em;
   }
 }

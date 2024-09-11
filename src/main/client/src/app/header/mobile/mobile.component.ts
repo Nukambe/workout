@@ -17,7 +17,7 @@ import { ProfileComponent } from "../profile/profile.component";
 export class MobileComponent {
 
   open: boolean = false;
-  @Input() routes: { title: string, link: string }[] = [];
+  @Input() routes: { title: string, link: string, img: string }[] = [];
 
   constructor() { }
 
