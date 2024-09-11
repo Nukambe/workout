@@ -2,6 +2,12 @@
   display: none;
 }
 
+#header-mobile {
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
 @media screen and (min-width: 720px) {
   #header-desktop {
     display: block;

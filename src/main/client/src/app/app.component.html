@@ -1,8 +1,6 @@
-<div id="flipflop">
-  @if (getUser()) {
-  <app-header></app-header>
-  }
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-</div>
+@if (getUser()) {
+<app-header></app-header>
+}
+<main>
+  <router-outlet></router-outlet>
+</main>
