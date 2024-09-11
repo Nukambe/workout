@@ -1,0 +1,23 @@
+ul {
+    overflow: scroll;
+    height: 540px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+li {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+h3 {
+    margin: 0;
+}
+
+img {
+    border-radius: 64px;
+}

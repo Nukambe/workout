@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Workout } from "../models/Workout.model";
 import { Observable } from "rxjs";
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,12 +44,18 @@ export class WorkoutService {
     return this.http.delete(this.baseUrl + `/${id}`, {
       withCredentials: true,
       observe: 'response'
-    })
+    });
   }
 
   searchWorkouts(query: { start?: string, end?: string }): Observable<Workout[]> {
     return this.http.get<Workout[]>(this.baseUrl + `/search?${new URLSearchParams(query)}`, {
       withCredentials: true
-    })
+    });
+  }
+
+  getCommunityWorkouts(query: { title?: string }): Observable<{ user: User, workout: Workout }[]> {
+    return this.http.get<{ user: User, workout: Workout }[]>(this.baseUrl + `/community?${new URLSearchParams(query)}`, {
+      withCredentials: true
+    });
   }
 }

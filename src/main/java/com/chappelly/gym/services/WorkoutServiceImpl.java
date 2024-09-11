@@ -1,5 +1,6 @@
 package com.chappelly.gym.services;
 
+import com.chappelly.gym.dto.CommunityWorkout;
 import com.chappelly.gym.entities.*;
 import com.chappelly.gym.repositories.ExerciseRepository;
 import com.chappelly.gym.repositories.SetsRepository;
@@ -8,10 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class WorkoutServiceImpl implements WorkoutService {
@@ -48,6 +46,8 @@ public class WorkoutServiceImpl implements WorkoutService {
     @Override
     public void updateWorkout(Workout workout, User user) {
         Workout repoWorkout = this.workoutRepository.findWorkoutByUserAndId(user, workout.getId());
+        repoWorkout.setName(workout.getName());
+        repoWorkout.setDate(convertDateToUTC(workout.getDate()));
         this.exerciseRepository.deleteAll(repoWorkout.getExercises());
         for (Exercise exercise : workout.getExercises()) {
             exercise.setId(null);
@@ -79,8 +79,24 @@ public class WorkoutServiceImpl implements WorkoutService {
         return this.workoutRepository.findWorkoutsByUserAndDateBetween(user, end, start);
     }
 
+    @Override
+    public List<CommunityWorkout> findAll() {
+        List<CommunityWorkout> communityWorkouts = new ArrayList<>();
+        List<Workout> workouts = this.workoutRepository.findAll();
+
+        for (Workout workout : workouts) {
+            communityWorkouts.add(new CommunityWorkout(workout));
+        }
+        return communityWorkouts;
+    }
+
     private Date convertISOToDate(String iso) {
         Instant instant = Instant.parse(iso);
+        return Date.from(instant);
+    }
+
+    private Date convertDateToUTC(Date date) {
+        Instant instant = date.toInstant();
         return Date.from(instant);
     }
 }

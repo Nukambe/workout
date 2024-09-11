@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,5 +37,13 @@ public class UsersController {
 
         if (url != null) { return ResponseEntity.ok(url); }
         else { return ResponseEntity.badRequest().build(); }
+    }
+
+    @GetMapping("/community")
+    public ResponseEntity<List<User>> getUsers(HttpServletRequest request) {
+        Optional<User> jwtUser = jwtUtil.getUserFromJwtToken(request.getCookies());
+        if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
+        return ResponseEntity.ok(this.userService.findAll());
     }
 }

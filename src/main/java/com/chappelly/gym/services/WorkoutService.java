@@ -1,5 +1,6 @@
 package com.chappelly.gym.services;
 
+import com.chappelly.gym.dto.CommunityWorkout;
 import com.chappelly.gym.entities.User;
 import com.chappelly.gym.entities.Workout;
 
@@ -14,4 +15,5 @@ public interface WorkoutService {
     public void updateWorkout(Workout workout, User user);
     public void deleteWorkout(UUID id, User user);
     public List<Workout> findWorkoutsInDateRange(User user, String startDate, String endDate);
+    public List<CommunityWorkout> findAll();
 }

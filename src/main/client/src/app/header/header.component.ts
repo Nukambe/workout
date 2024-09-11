@@ -15,6 +15,7 @@ import {DesktopComponent} from "./desktop/desktop.component";
 export class HeaderComponent {
   routes: { title: string, link: string, img: string }[] = [
     { title: "LOG", link: "/log", img: "/icons/notebook.png" },
+    { title: "COMMUNITY", link: "/community", img: "/icons/community.png" },
     { title: "REPORTS", link: "/reports", img: "/icons/report.png" },
     // { title: "SIGN OUT", link: "/signout" }
   ];
