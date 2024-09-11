@@ -1,58 +1,15 @@
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5em 1em;
-  box-shadow: 0 0.1em 0.2em var(--box-shadow-color);
+  padding: 0em 1em;
+  border-top: 1px solid var(--secondary-color);
   font-size: x-large;
-  transition: height linear 2s;
-}
-
-nav.open {
-  height: 100vh;
-  position: relative;
-  z-index: 1000;
-  background-color: var(--secondary-color);
-  align-items: flex-start;
-}
-
-::ng-deep body.no-scroll {
-  overflow: hidden;
-}
-
-p {
-  margin: 0;
-  color: var(--text-color);
-}
-
-nav.open p {
-  padding: 17px 0;
-}
-
-button {
-  margin: unset;
-  background-color: unset;
-  border: unset;
+  background-color: var(--primary-color);
 }
 
 ul {
-  position: absolute;
   display: flex;
-  flex-direction: column;
-  gap: 2em;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: space-between;
   list-style: none;
-  padding: 0;
-}
-
-li {
-  text-align: center;
-  color: var(--background-color);
-}
-
-a, a:visited {
-  color: unset;
-  text-decoration: none;
+  padding: 0.5em 0;
+  margin: 0;
 }

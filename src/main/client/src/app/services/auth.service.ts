@@ -24,7 +24,10 @@ export class AuthService {
     });
     observableUser.subscribe({
       next: (user) => this.user = user,
-      error: (err) => console.error(err)
+      error: (err) => {
+        this.user = null;
+        console.error(err);
+      }
     });
     return observableUser;
   }
@@ -37,10 +40,15 @@ export class AuthService {
   }
 
   signOut() {
-    return this.http.delete(this.baseUrl, {
+    const observable = this.http.delete(this.baseUrl, {
       withCredentials: true,
       observe: 'response'
-    })
+    });
+    observable.subscribe({
+      next: () => this.user = null,
+      error: (err) => console.error(err)
+    });
+    return observable;
   }
 
   refresh(): Observable<User> {
@@ -49,7 +57,10 @@ export class AuthService {
     });
     observableUser.subscribe({
       next: (user) => this.user = user,
-      error: (err) => console.error(err)
+      error: (err) => {
+        this.user = null;
+        console.error(err);
+      }
     });
     return observableUser;
   }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
@@ -25,7 +25,6 @@ export class UploadAvatarComponent {
       this.userService.uploadAvatar(this.selectedFile).subscribe({
         next: (url) => {
           const user = this.authService.getUser();
-          user!.avatarUrl = url;
           this.response = "Upload Successful!";
           setTimeout(() => window.location.reload(), 500);
         },
