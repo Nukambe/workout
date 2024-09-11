@@ -1,21 +1,12 @@
 main {
+  box-sizing: border-box;
   padding: 0 1em;
   height: 100%;
 }
 
-#flipflop {
-  display: flex;
-  flex-direction: column-reverse;
-  height: 100%;
-}
-
 @media screen and (min-width: 720px) {
-  #body-container {
+  main {
     max-width: 1000px;
     margin: auto;
-  }
-
-  #flipflop {
-    flex-direction: column;
   }
 }

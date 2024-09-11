@@ -21,3 +21,10 @@ h3 {
 img {
     border-radius: 64px;
 }
+
+@media screen and (min-width: 720px) {
+    ul {
+        overflow: auto;
+        height: fit-content;
+    }
+}
