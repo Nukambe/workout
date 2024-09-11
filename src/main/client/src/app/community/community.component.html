@@ -1,0 +1,21 @@
+<h1>COMMUNITY</h1>
+<form>
+    <input type="search" placeholder="Search...">
+    <button>Search</button>
+</form>
+<nav>
+    <ul>
+        @for (category of categories; track $index) {
+        <li>
+            <button (click)="activateCategory($index)" [classList]="activeCategory === $index ? 'active' : ''">
+                {{ category.title }}
+            </button>
+        </li>
+        }
+    </ul>
+</nav>
+<hr>
+@switch (activeCategory) {
+    @case (0) { <app-workout-list></app-workout-list> }
+    @case (1) { <app-user-list></app-user-list> }
+}

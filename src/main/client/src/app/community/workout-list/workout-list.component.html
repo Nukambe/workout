@@ -1,0 +1,11 @@
+<ul>
+    @for (workout of workouts; track $index) {
+        <li>
+            <img [src]="workout.user.avatarUrl" alt="Avatar" width="64px">
+            <div>
+                <h3>{{ workout.workout.name }}</h3>
+                <sup>By {{ workout.user.name }}</sup>
+            </div>
+        </li>
+    }
+</ul>

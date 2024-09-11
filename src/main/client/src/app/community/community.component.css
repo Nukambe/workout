@@ -1,0 +1,23 @@
+form {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+button {
+    margin: unset;
+    background-color: unset;
+}
+
+button.active {
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

@@ -1,5 +1,6 @@
 package com.chappelly.gym.controllers;
 
+import com.chappelly.gym.dto.CommunityWorkout;
 import com.chappelly.gym.entities.User;
 import com.chappelly.gym.entities.Workout;
 import com.chappelly.gym.services.WorkoutService;
@@ -61,6 +62,7 @@ public class WorkoutsController {
         if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
         User user = jwtUser.get();
+        System.out.println("controller: " + workout.getDate());
         this.workoutService.updateWorkout(workout, user);
         return ResponseEntity.ok().build();
     }
@@ -86,5 +88,13 @@ public class WorkoutsController {
 
         User user = jwtUser.get();
         return ResponseEntity.ok(this.workoutService.findWorkoutsInDateRange(user, start, end));
+    }
+
+    @GetMapping("/community")
+    public ResponseEntity<List<CommunityWorkout>> getCommunityWorkouts(HttpServletRequest request) {
+        Optional<User> jwtUser = jwtUtil.getUserFromJwtToken(request.getCookies());
+        if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
+        return ResponseEntity.ok(this.workoutService.findAll());
     }
 }
