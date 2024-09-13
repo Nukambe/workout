@@ -1,6 +1,6 @@
 ul {
-    overflow: scroll;
-    height: 540px;
+    /* overflow: scroll;
+    height: 540px; */
     list-style: none;
     padding: 0;
     display: flex;
@@ -20,4 +20,11 @@ h3 {
 
 img {
     border-radius: 64px;
+}
+
+@media screen and (min-width: 720px) {
+    /* ul {
+        overflow: auto;
+        height: fit-content;
+    } */
 }
