@@ -81,7 +81,7 @@ public class User {
         User user = new User();
         user.setId(this.id);
         user.setName(this.name);
-        user.setEmail(this.email);
+//        user.setEmail(this.email);
         user.setAvatarUrl(this.avatarUrl);
         user.setLastLogin(this.lastLogin);
         return user;
