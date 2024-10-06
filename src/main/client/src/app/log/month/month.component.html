@@ -1,0 +1,16 @@
+<button (click)="openCloseWorkouts()" [style]="{ borderRadius: showWorkouts ? '8px 8px 0 0' : ''}">
+    <p>
+        {{ fullMonths[month.month] }}: {{ workouts.length }}
+    </p>
+    <time [dateTime]="month.year">{{ month.year }}</time>
+    <p class="arrow">
+        {{ showWorkouts ? "&triangle;" : "&triangledown;" }}
+    </p>
+</button>
+@if (showWorkouts) {
+<section>
+    @for (workout of workouts; track $index) {
+    <app-workout-button [workout]="workout"></app-workout-button>
+    }
+</section>
+}

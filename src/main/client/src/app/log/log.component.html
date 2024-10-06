@@ -10,14 +10,18 @@
   </label>
 </div>
 <section id="workouts">
+  @if (workouts.length !== filteredWorkouts.length) {
   @for (workout of filteredWorkouts; track $index) {
-  <app-workout-button [workout]="workout">
-    {{ $index + 1 }}. {{ workout.name }}
-  </app-workout-button>
+  <app-workout-button [workout]="workout"></app-workout-button>
   } @empty {
   <button routerLink="/log/create" id="empty-cta">
     <p>CREATE A NEW WORKOUT!</p>
   </button>
+  }
+  } @else {
+    @for (month of months; track $index) {
+      <app-month [month]="month" [workouts]="getWorkoutsForMonth(month.month)"></app-month>
+    }
   }
 </section>
 <button id="floating-action-button" routerLink="/log/create">
