@@ -21,6 +21,9 @@ h3 {
 
 img {
     border-radius: 64px;
+    object-fit: contain;
+    width: 64px;
+    height: 64px;
 }
 
 @media screen and (min-width: 720px) {
