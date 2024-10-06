@@ -20,6 +20,8 @@ h3 {
 
 img {
     border-radius: 64px;
+    height: 64px;
+    width: 64px;
 }
 
 @media screen and (min-width: 720px) {

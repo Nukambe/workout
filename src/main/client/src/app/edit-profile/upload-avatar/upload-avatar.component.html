@@ -1,6 +1,6 @@
 <div>
     <h3>Edit Avatar</h3>
-    <img [src]="getUser()?.avatarUrl" alt="Avatar" width="128px" height="128px">
+    <img [src]="getUser()?.avatarUrl" alt="Avatar">
     <form (submit)="onSubmit($event)">
         <input type="file" (change)="onFileSelected($event)" />
         <button type="submit" [disabled]="selectedFile === null">Upload</button>
