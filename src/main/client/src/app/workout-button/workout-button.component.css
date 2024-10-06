@@ -5,3 +5,7 @@ button {
     align-items: center;
     width: 100%;
 }
+
+p {
+    margin: 0;
+}

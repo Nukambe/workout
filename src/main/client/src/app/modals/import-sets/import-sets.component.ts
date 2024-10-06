@@ -49,8 +49,16 @@ export class ImportSetsComponent implements OnInit {
         if (!isNaN(repeat)) newSet.repeat = repeat;
         else throw new Error("Repeat is NaN");
 
-        const ratio = parseFloat(setImport[4].slice(0, 2));
-        if (!isNaN(ratio)) newSet.ratio = ratio;
+        let ratio: string | number = "";
+        for (let i = 0; i < setImport[4].length; i++) {
+          if (setImport[4][i] === "%") {
+            break;
+          } else {
+            ratio += setImport[4][i];
+          }
+        }
+        ratio = parseInt(ratio);
+        if (!isNaN(ratio as number)) newSet.ratio = ratio as number;
         else throw new Error("Ratio is NaN");
 
         importedSets.push(newSet);

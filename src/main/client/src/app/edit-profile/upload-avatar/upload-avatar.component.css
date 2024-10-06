@@ -5,6 +5,8 @@ form {
 img {
     border-radius: 76px;
     padding: 12px;
+    height: 128px;
+    width: 128px;
 }
 
 button {

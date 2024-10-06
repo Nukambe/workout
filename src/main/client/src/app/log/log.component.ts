@@ -4,6 +4,8 @@ import {Workout} from "../models/Workout.model";
 import {WorkoutService} from "../services/workout.service";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {WorkoutButtonComponent} from "../workout-button/workout-button.component";
+import { CommonModule } from '@angular/common';
+import { MonthComponent } from './month/month.component';
 
 @Component({
   selector: 'app-log',
@@ -12,7 +14,9 @@ import {WorkoutButtonComponent} from "../workout-button/workout-button.component
     ReactiveFormsModule,
     FormsModule,
     WorkoutButtonComponent,
-    RouterModule
+    RouterModule,
+    CommonModule,
+    MonthComponent
   ],
   templateUrl: './log.component.html',
   styleUrl: './log.component.css'
@@ -22,7 +26,8 @@ export class LogComponent implements OnInit {
   workouts: Workout[] = [];
   filteredWorkouts: Workout[] = [];
   name = new FormControl("")!;
-  searchQuery: string = ""
+  searchQuery: string = "";
+  months: { month: number; year: number }[] = [];
 
   constructor(private workoutService: WorkoutService) {
   }
@@ -35,8 +40,17 @@ export class LogComponent implements OnInit {
           return workout;
         });
         this.filteredWorkouts = this.workouts;
-      }
-      ,
+        const months: Set<string> = new Set();
+        this.workouts.forEach(workout => months.add(JSON.stringify({ month: workout.date.getMonth(), year: workout.date.getFullYear() })));
+        this.months = Array.from(months)
+          .map(month => JSON.parse(month))
+          .sort((a, b) => {
+            if (a.year === b.year) {
+              return b.month - a.month;
+            }
+            return b.year - a.year;
+          });
+      },
       error: err => console.error(err)
     });
   }
@@ -53,5 +67,9 @@ export class LogComponent implements OnInit {
       const date = new Date(dateInput);
       this.filteredWorkouts = this.filteredWorkouts.filter(workout => workout.date.toUTCString() === date.toUTCString());
     }
+  }
+
+  getWorkoutsForMonth(month: number) {
+    return this.workouts.filter(workout => workout.date.getMonth() === month);
   }
 }
