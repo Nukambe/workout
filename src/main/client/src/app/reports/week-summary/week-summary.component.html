@@ -13,9 +13,9 @@
                     @for (exercise of workout.exercises; track $index) {
                         <li>
                             <p>
-                                {{ exercise.name }}: Max Weight = {{ exercise.maxWeight }} lbs
+                                {{ exercise.name }}: Max Weight = {{ exercise.maxWeight }} kg
                                 @for (set of exercise.sets; track $index) {
-                                    <div>[Set {{ set.number }}: {{ set.reps + " reps @" }} {{ set.ratio / 100 * exercise.maxWeight }} lbs] </div>
+                                    <div>[Set {{ set.number }}: {{ set.reps + " reps @" }} {{ set.ratio / 100 * exercise.maxWeight }} kg] </div>
                                 } @empty {
                                     <div>[No sets]</div>
                                 }
