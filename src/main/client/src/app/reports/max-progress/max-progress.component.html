@@ -5,7 +5,7 @@
     <h2>{{ record.name }}</h2>
     <ul>
         @for (date of record.weightRecords; track $index) {
-        <li>{{ date.date }}: {{ date.weight }} lbs</li>
+        <li>{{ date.date }}: {{ date.weight }} kg</li>
         }
     </ul>
     } @empty {
