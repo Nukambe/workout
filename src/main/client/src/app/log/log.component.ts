@@ -36,7 +36,8 @@ export class LogComponent implements OnInit {
     this.workoutService.getWorkouts().subscribe({
       next: workouts => {
         this.workouts = workouts.map(workout => {
-          workout.date = new Date(`${workout.date}T00:00:00Z`);
+          const [year, month, day] = (workout.date as any).split("-"); // workout.date is a string on the server
+          workout.date = new Date(year, month - 1, day);
           return workout;
         });
         this.filteredWorkouts = this.workouts;
@@ -70,6 +71,9 @@ export class LogComponent implements OnInit {
   }
 
   getWorkoutsForMonth(month: number) {
-    return this.workouts.filter(workout => workout.date.getMonth() === month);
+    return this.workouts.filter(workout => {
+      console.log(workout.date.getMonth(), month);
+      return workout.date.getMonth() === month
+    });
   }
 }
