@@ -1,0 +1,4 @@
+<h1>NOTES</h1>
+@for (note of notes; track $index) {
+  <app-note [note]="note" (deleted)="deleteNote($index)" (saved)="saveNote()"></app-note>
+}

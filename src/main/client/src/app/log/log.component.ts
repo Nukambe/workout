@@ -62,7 +62,6 @@ export class LogComponent implements OnInit {
 
   searchDate(event: Event) {
     const dateInput = (event.target as HTMLInputElement).value;
-    console.log(dateInput);
     this.searchText();
     if (dateInput) {
       const date = new Date(dateInput);
@@ -72,7 +71,6 @@ export class LogComponent implements OnInit {
 
   getWorkoutsForMonth(month: number) {
     return this.workouts.filter(workout => {
-      console.log(workout.date.getMonth(), month);
       return workout.date.getMonth() === month
     });
   }

@@ -58,6 +58,11 @@ public class User {
     @JsonIgnore
     List<Workout> workouts = new ArrayList<>();
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "notes_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Note notes;
+
     @Transient
     private String password;
 
@@ -131,4 +136,7 @@ public class User {
 
     public String getConfirmPassword() { return confirmPassword; }
     public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
+
+    public Note getNotes() { return notes; }
+    public void setNotes(Note notes) { this.notes = notes; }
 }

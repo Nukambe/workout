@@ -62,7 +62,6 @@ public class WorkoutsController {
         if (jwtUser.isEmpty()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
         User user = jwtUser.get();
-        System.out.println("controller: " + workout.getDate());
         this.workoutService.updateWorkout(workout, user);
         return ResponseEntity.ok().build();
     }

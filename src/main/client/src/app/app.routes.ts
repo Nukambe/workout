@@ -12,6 +12,7 @@ import { WeekSummaryComponent } from './reports/week-summary/week-summary.compon
 import { MaxProgressComponent } from './reports/max-progress/max-progress.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { CommunityComponent } from './community/community.component';
+import {NotesComponent} from "./notes/notes.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "/signin", pathMatch: "full" },
@@ -26,5 +27,6 @@ export const routes: Routes = [
   { path: "reports/max-progress", component: MaxProgressComponent },
   { path: "profile", component: EditProfileComponent },
   { path: "community", component: CommunityComponent },
+  { path: "notes", component: NotesComponent },
   { path: "**", redirectTo: "" }
 ];
