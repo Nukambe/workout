@@ -54,6 +54,7 @@ export class WorkoutComponent implements OnInit {
 
   finishEdit() {
     this.edit = false;
+    this.convertFreedomWorkout();
   }
 
   deleteWorkout() {
