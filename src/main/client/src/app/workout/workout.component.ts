@@ -83,7 +83,7 @@ export class WorkoutComponent implements OnInit {
   convertFreedomWorkout() {
     this.freedomWorkout = JSON.parse(JSON.stringify(this.workout));
     this.freedomWorkout!.exercises.forEach(exercise => {
-      exercise.maxWeight = exercise.maxWeight * 2.205;
+      exercise.maxWeight = exercise.maxWeight * 2.20462;
     });
   }
 }
