@@ -6,7 +6,7 @@
 <section class="exercise-body">
   <p class="note">{{ exercise.note }}</p>
   <div class="max-weight">
-    MAX WEIGHT: <span>{{ exercise.maxWeight }} {{ units }}</span>
+    MAX WEIGHT: <span>{{ exercise.maxWeight | number:'1.0-0' }} {{ units }}</span>
   </div>
   @for (set of exercise.sets; track $index) {
   <div class="sets">
