@@ -13,11 +13,14 @@
     <img src="/icons/trash.png" alt="Trash">
   </button>
 </section>
-  <h2>{{workout.name}}</h2>
+  <div id="title-kg">
+    <h2>{{workout.name}}</h2>
+    <button (click)="toggleUnits()">{{ units }}</button>
+  </div>
 
 <section id="workout-body">
-  @for (exercise of workout.exercises; track $index) {
-  <app-exercise [exercise]="exercise"></app-exercise>
+  @for (exercise of getDisplayWorkout().exercises; track $index) {
+  <app-exercise [exercise]="exercise" [units]="units"></app-exercise>
   } @empty {
   <p>No exercises</p>
   }

@@ -18,6 +18,16 @@
     padding-bottom: 3em;
 }
 
+#title-kg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#title-kg button {
+  color: white;
+}
+
 @media screen and (min-width: 720px) {
     #workout-header {
         display: flex;

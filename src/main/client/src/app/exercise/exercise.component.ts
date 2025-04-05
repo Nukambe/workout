@@ -14,6 +14,7 @@ import {DecimalPipe} from "@angular/common";
 export class ExerciseComponent {
 
   @Input() exercise!: Exercise;
+  @Input() units: string = "kg";
   open: boolean = false;
 
   constructor() {

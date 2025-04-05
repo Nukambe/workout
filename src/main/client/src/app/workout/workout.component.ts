@@ -23,9 +23,11 @@ export class WorkoutComponent implements OnInit {
 
   @ViewChild('dateInput') dateInput!: ElementRef<HTMLInputElement>;
   workout: Workout | null = null;
+  freedomWorkout: Workout | null = null;
   id: string = "";
   edit: boolean = false;
   confirmDelete: boolean = false;
+  units: string = "kg";
 
   constructor(private workoutService: WorkoutService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -40,7 +42,7 @@ export class WorkoutComponent implements OnInit {
       next: workout => {
         workout.date = new Date(`${workout.date}T00:00:00Z`)
         this.workout = workout;
-        // console.log(workout);
+        this.convertFreedomWorkout();
       },
       error: err => console.error(err)
     });
@@ -67,5 +69,20 @@ export class WorkoutComponent implements OnInit {
 
   closeDeleteModal() {
     this.confirmDelete = false;
+  }
+
+  toggleUnits() {
+    this.units = this.units === "kg" ? "lbs" : "kg";
+  }
+
+  getDisplayWorkout(): Workout {
+    return this.units === "kg" ? this.workout! : this.freedomWorkout!;
+  }
+
+  convertFreedomWorkout() {
+    this.freedomWorkout = JSON.parse(JSON.stringify(this.workout));
+    this.freedomWorkout!.exercises.forEach(exercise => {
+      exercise.maxWeight = exercise.maxWeight * 2.205;
+    });
   }
 }
