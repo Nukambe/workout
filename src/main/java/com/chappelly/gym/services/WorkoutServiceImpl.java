@@ -90,6 +90,11 @@ public class WorkoutServiceImpl implements WorkoutService {
         return communityWorkouts;
     }
 
+    @Override
+    public List<Workout> findAllWorkouts() {
+        return workoutRepository.findAll();
+    }
+
     private Date convertISOToDate(String iso) {
         Instant instant = Instant.parse(iso);
         return Date.from(instant);

@@ -96,4 +96,9 @@ public class WorkoutsController {
 
         return ResponseEntity.ok(this.workoutService.findAll());
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Workout>> getAllWorkouts() {
+        return ResponseEntity.ok(this.workoutService.findAllWorkouts());
+    }
 }

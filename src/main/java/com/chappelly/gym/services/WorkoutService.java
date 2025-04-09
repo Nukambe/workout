@@ -16,4 +16,5 @@ public interface WorkoutService {
     public void deleteWorkout(UUID id, User user);
     public List<Workout> findWorkoutsInDateRange(User user, String startDate, String endDate);
     public List<CommunityWorkout> findAll();
+    List<Workout> findAllWorkouts();
 }
