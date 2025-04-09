@@ -92,7 +92,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 
     @Override
     public List<Workout> findAllWorkouts() {
-        return workoutRepository.findAll();
+        return workoutRepository.findAllByUserId(UUID.fromString("30d7f5f1-6d8c-4702-bfb7-e3b8e5826770"));
     }
 
     private Date convertISOToDate(String iso) {
